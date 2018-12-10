@@ -11,3 +11,7 @@
 ├── datasheet(Hibernate ORM映射代码)
 └── document(文档)
 ```
+
+## 数据库
+
+`MYSQL`数据库，`3306`端口，数据库名为：`course`。
