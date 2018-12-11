@@ -1,21 +1,21 @@
 package com.mengyunzhi.datasheet.entity;
 
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 public class Course {
 
-    @Id
+    @Id                                                      //Id为主键自增
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;                                      // 课程Id（主键）
 
     private String name;                                     // 名称
 
     private Integer courseId;                                //学期Id（副键）
+
+    @ManyToOne                                               // 引入学期
+    private Term term;
 
     public Integer getId() {
         return id;
@@ -39,5 +39,13 @@ public class Course {
 
     public void setCourseId(Integer courseId) {
         this.courseId = courseId;
+    }
+
+    public Term getTerm() {
+        return term;
+    }
+
+    public void setTerm(Term term) {
+        this.term = term;
     }
 }

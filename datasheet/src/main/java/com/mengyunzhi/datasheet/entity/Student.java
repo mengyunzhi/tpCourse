@@ -1,14 +1,13 @@
 package com.mengyunzhi.datasheet.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 public class Student {
 
-    @Id
+    @Id                                                      //Id为主键自增
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;                                      // 学生Id(主键)
 
@@ -18,11 +17,15 @@ public class Student {
 
     private String tel;                                      // 电话
 
-    private Float icontribution;                             // 贡献值
+    private Float contribution;                              // 贡献值
 
-    private Integer coefficient;                              // 贡献值系数
+    private Integer coefficient;                             // 贡献值系数
 
     private String gitUserName;                              // GIT用户名
+
+
+    @ManyToMany                                              // 学生课程关联，M：N
+    private List<Course> courses = new ArrayList<>();
 
     public Integer getId() {
         return id;
@@ -56,12 +59,12 @@ public class Student {
         this.tel = tel;
     }
 
-    public Float getIcontribution() {
-        return icontribution;
+    public Float getContribution() {
+        return contribution;
     }
 
-    public void setIcontribution(Float icontribution) {
-        this.icontribution = icontribution;
+    public void setContribution(Float contribution) {
+        this.contribution = contribution;
     }
 
     public Integer getCoefficient() {
@@ -78,5 +81,13 @@ public class Student {
 
     public void setGitUserName(String gitUserName) {
         this.gitUserName = gitUserName;
+    }
+
+    public List<Course> getCourses() {
+        return courses;
+    }
+
+    public void setCourses(List<Course> courses) {
+        this.courses = courses;
     }
 }

@@ -8,7 +8,7 @@ import javax.persistence.Id;
 @Entity
 public class User {
 
-    @Id
+    @Id                                                      //Id为主键自增
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;                                      // 用户Id(主键)
 
@@ -16,7 +16,7 @@ public class User {
 
     private String userName;                                 //用户名
 
-    private String password;                                 // 密码
+    private String passWord;                                 // 密码
 
     public Integer getId() {
         return id;
@@ -42,11 +42,11 @@ public class User {
         this.userName = userName;
     }
 
-    public String getPassword() {
-        return password;
+    public String getPassWord() {
+        return passWord;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
+    public void setPassWord(String passWord) {
+        this.passWord = passWord;
     }
 }

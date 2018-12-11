@@ -1,15 +1,12 @@
 package com.mengyunzhi.datasheet.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.sql.Timestamp;
 
 @Entity
 public class ContributionRecord {
 
-    @Id
+    @Id                                                      //Id为主键自增
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;                                      // 记录Id(主键)
 
@@ -26,6 +23,10 @@ public class ContributionRecord {
     private String remark;                                   //备注
 
     private Integer studentId;                               //学生Id(副键)
+
+
+    @ManyToOne                                               // 贡献值记录和学生的关联n：1
+    private Student student;
 
     public Integer getId() {
         return id;
@@ -89,5 +90,13 @@ public class ContributionRecord {
 
     public void setStudentId(Integer studentId) {
         this.studentId = studentId;
+    }
+
+    public Student getStudent() {
+        return student;
+    }
+
+    public void setStudent(Student student) {
+        this.student = student;
     }
 }
