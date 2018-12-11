@@ -1,24 +1,22 @@
 package com.mengyunzhi.datasheet.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 public class ClassTime {
 
-    @Id
+    @Id                                                       //Id为主键自增
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;                                      // 上课时间Id(主键)
+    private Integer id;                                       // 上课时间Id(主键)
 
-    private Integer week;                                    // 周
+    private Integer week;                                     // 周
 
-    private Integer day;                                      //天
+    private Integer day;                                      // 天
 
-    private Integer dperiod;                                  //节
+    private Integer period;                                   // 节
 
-    private Integer classId;                                  //课程ID(副键)
+    @ManyToOne                                                // 引入课程
+    private Course course;
 
     public Integer getId() {
         return id;
@@ -44,19 +42,19 @@ public class ClassTime {
         this.day = day;
     }
 
-    public Integer getDperiod() {
-        return dperiod;
+    public Integer getPeriod() {
+        return period;
     }
 
-    public void setDperiod(Integer dperiod) {
-        this.dperiod = dperiod;
+    public void setPeriod(Integer period) {
+        this.period = period;
     }
 
-    public Integer getClassId() {
-        return classId;
+    public Course getCourse() {
+        return course;
     }
 
-    public void setClassId(Integer classId) {
-        this.classId = classId;
+    public void setCourse(Course course) {
+        this.course = course;
     }
 }

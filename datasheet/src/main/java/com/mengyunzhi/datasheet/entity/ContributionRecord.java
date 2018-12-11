@@ -1,31 +1,29 @@
 package com.mengyunzhi.datasheet.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.sql.Timestamp;
 
 @Entity
 public class ContributionRecord {
 
-    @Id
+    @Id                                                      // Id为主键自增
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;                                      // 记录Id(主键)
 
     private Float contribution;                              // 贡献值
 
-    private Timestamp time;                                  //上传时间
+    private Timestamp time;                                  // 上传时间
 
-    private String title;                                    //标题
+    private String title;                                    // 标题
 
-    private String reposiporyName;                           //仓库名
+    private String RepositoryName;                           // 仓库名
 
-    private String pullRequestUrl;                           //pull request
+    private String pullRequestUrl;                           // pull request
 
-    private String remark;                                   //备注
+    private String remark;                                   // 备注
 
-    private Integer studentId;                               //学生Id(副键)
+    @ManyToOne                                               // 贡献值记录和学生的关联n：1
+    private Student student;
 
     public Integer getId() {
         return id;
@@ -59,12 +57,12 @@ public class ContributionRecord {
         this.title = title;
     }
 
-    public String getReposiporyName() {
-        return reposiporyName;
+    public String getRepositoryName() {
+        return RepositoryName;
     }
 
-    public void setReposiporyName(String reposiporyName) {
-        this.reposiporyName = reposiporyName;
+    public void setRepositoryName(String repositoryName) {
+        RepositoryName = repositoryName;
     }
 
     public String getPullRequestUrl() {
@@ -83,11 +81,11 @@ public class ContributionRecord {
         this.remark = remark;
     }
 
-    public Integer getStudentId() {
-        return studentId;
+    public Student getStudent() {
+        return student;
     }
 
-    public void setStudentId(Integer studentId) {
-        this.studentId = studentId;
+    public void setStudent(Student student) {
+        this.student = student;
     }
 }
