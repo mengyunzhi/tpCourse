@@ -6,7 +6,7 @@ import javax.persistence.*;
 @Entity
 public class Course {
 
-    @Id                                                      //Id为主键自增
+    @Id                                                      // Id为主键自增
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;                                      // 课程Id（主键）
 

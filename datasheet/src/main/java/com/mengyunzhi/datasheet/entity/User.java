@@ -8,13 +8,13 @@ import javax.persistence.Id;
 @Entity
 public class User {
 
-    @Id                                                      //Id为主键自增
+    @Id                                                      // Id为主键自增
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;                                      // 用户Id(主键)
 
     private String name;                                     // 姓名
 
-    private String username;                                 //用户名
+    private String username;                                 // 用户名
 
     private String password;                                 // 密码
 

@@ -11,9 +11,9 @@ public class ClassTime {
 
     private Integer week;                                     // 周
 
-    private Integer day;                                      //天
+    private Integer day;                                      // 天
 
-    private Integer period;                                   //节
+    private Integer period;                                   // 节
 
     @ManyToOne                                                // 引入课程
     private Course course;

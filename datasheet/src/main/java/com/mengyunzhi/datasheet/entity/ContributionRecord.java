@@ -6,21 +6,21 @@ import java.sql.Timestamp;
 @Entity
 public class ContributionRecord {
 
-    @Id                                                      //Id为主键自增
+    @Id                                                      // Id为主键自增
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;                                      // 记录Id(主键)
 
     private Float contribution;                              // 贡献值
 
-    private Timestamp time;                                  //上传时间
+    private Timestamp time;                                  // 上传时间
 
-    private String title;                                    //标题
+    private String title;                                    // 标题
 
-    private String RepositoryName;                           //仓库名
+    private String RepositoryName;                           // 仓库名
 
-    private String pullRequestUrl;                           //pull request
+    private String pullRequestUrl;                           // pull request
 
-    private String remark;                                   //备注
+    private String remark;                                   // 备注
 
     @ManyToOne                                               // 贡献值记录和学生的关联n：1
     private Student student;

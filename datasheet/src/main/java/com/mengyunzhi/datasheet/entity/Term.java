@@ -9,7 +9,7 @@ import java.sql.Date;
 @Entity
 public class Term {
 
-    @Id                                                      //Id为主键自增
+    @Id                                                      // Id为主键自增
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;                                      // 主键
 
