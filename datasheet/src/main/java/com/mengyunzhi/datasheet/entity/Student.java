@@ -13,7 +13,7 @@ public class Student {
 
     private String  name;                                    // 姓名
 
-    private String userName;                                 //用户名
+    private String username;                                 //用户名
 
     private String tel;                                      // 电话
 
@@ -21,7 +21,7 @@ public class Student {
 
     private Integer coefficient;                             // 贡献值系数
 
-    private String gitUserName;                              // GIT用户名
+    private String gitUsername;                              // GIT用户名
 
 
     @ManyToMany                                              // 学生课程关联，M：N
@@ -43,12 +43,12 @@ public class Student {
         this.name = name;
     }
 
-    public String getUserName() {
-        return userName;
+    public String getUsername() {
+        return username;
     }
 
-    public void setUserName(String userName) {
-        this.userName = userName;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public String getTel() {
@@ -75,12 +75,12 @@ public class Student {
         this.coefficient = coefficient;
     }
 
-    public String getGitUserName() {
-        return gitUserName;
+    public String getGitUsername() {
+        return gitUsername;
     }
 
-    public void setGitUserName(String gitUserName) {
-        this.gitUserName = gitUserName;
+    public void setGitUsername(String gitUsername) {
+        this.gitUsername = gitUsername;
     }
 
     public List<Course> getCourses() {

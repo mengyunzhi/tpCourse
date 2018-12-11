@@ -16,14 +16,11 @@ public class ContributionRecord {
 
     private String title;                                    //标题
 
-    private String reposiporyName;                           //仓库名
+    private String RepositoryName;                           //仓库名
 
     private String pullRequestUrl;                           //pull request
 
     private String remark;                                   //备注
-
-    private Integer studentId;                               //学生Id(副键)
-
 
     @ManyToOne                                               // 贡献值记录和学生的关联n：1
     private Student student;
@@ -60,12 +57,12 @@ public class ContributionRecord {
         this.title = title;
     }
 
-    public String getReposiporyName() {
-        return reposiporyName;
+    public String getRepositoryName() {
+        return RepositoryName;
     }
 
-    public void setReposiporyName(String reposiporyName) {
-        this.reposiporyName = reposiporyName;
+    public void setRepositoryName(String repositoryName) {
+        RepositoryName = repositoryName;
     }
 
     public String getPullRequestUrl() {
@@ -82,14 +79,6 @@ public class ContributionRecord {
 
     public void setRemark(String remark) {
         this.remark = remark;
-    }
-
-    public Integer getStudentId() {
-        return studentId;
-    }
-
-    public void setStudentId(Integer studentId) {
-        this.studentId = studentId;
     }
 
     public Student getStudent() {

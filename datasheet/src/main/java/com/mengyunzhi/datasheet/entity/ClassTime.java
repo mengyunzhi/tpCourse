@@ -15,8 +15,6 @@ public class ClassTime {
 
     private Integer period;                                   //节
 
-    private Integer name;                                     //课程(副键)
-
     @ManyToOne                                                // 引入课程
     private Course course;
 
@@ -50,14 +48,6 @@ public class ClassTime {
 
     public void setPeriod(Integer period) {
         this.period = period;
-    }
-
-    public Integer getName() {
-        return name;
-    }
-
-    public void setName(Integer name) {
-        this.name = name;
     }
 
     public Course getCourse() {

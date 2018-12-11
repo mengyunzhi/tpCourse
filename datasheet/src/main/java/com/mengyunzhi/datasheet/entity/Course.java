@@ -12,8 +12,6 @@ public class Course {
 
     private String name;                                     // 名称
 
-    private Integer courseId;                                //学期Id（副键）
-
     @ManyToOne                                               // 引入学期
     private Term term;
 
@@ -31,14 +29,6 @@ public class Course {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public Integer getCourseId() {
-        return courseId;
-    }
-
-    public void setCourseId(Integer courseId) {
-        this.courseId = courseId;
     }
 
     public Term getTerm() {

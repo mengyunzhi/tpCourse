@@ -14,9 +14,9 @@ public class User {
 
     private String name;                                     // 姓名
 
-    private String userName;                                 //用户名
+    private String username;                                 //用户名
 
-    private String passWord;                                 // 密码
+    private String password;                                 // 密码
 
     public Integer getId() {
         return id;
@@ -34,19 +34,19 @@ public class User {
         this.name = name;
     }
 
-    public String getUserName() {
-        return userName;
+    public String getUsername() {
+        return username;
     }
 
-    public void setUserName(String userName) {
-        this.userName = userName;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
-    public String getPassWord() {
-        return passWord;
+    public String getPassword() {
+        return password;
     }
 
-    public void setPassWord(String passWord) {
-        this.passWord = passWord;
+    public void setPassword(String password) {
+        this.password = password;
     }
 }
