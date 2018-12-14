@@ -1,40 +1,52 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-hans">
 
 <head>
     <meta charset="UTF-8">
-    <title>login</title>
+    <title>登录</title>
     <script src="https://cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
     <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
     <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="css/style.css">
     <style>
-        body{
-    background: url("../img/1.jpg");
-    animation-name:myfirst;
-    animation-duration:12s;
-    /*变换时间*/
-    animation-delay:0s;
-    /*动画开始时间*/
-    animation-iteration-count:infinite;
-    /*下一周期循环播放*/
-    animation-play-state:running;
-    /*动画开始运行*/
-}
-@keyframes myfirst
-{
-    0%   {background:url("http://img.pptjia.com/image/20180117/f4b76385a3ccdbac48893cc6418806d5.jpg");}
-    34%  {background:url("http://img17.3lian.com/d/file/201703/03/a86afd917c3dfcecea4147ade4a66b37.jpg");}
-    67%  {background:url("http://img2.3lian.com/2014/f4/139/d/119.jpg");}
-    100% {background:url("http://img17.3lian.com/d/file/201702/16/e442ae6a1ab65033db1c0f2bbe3116d5.jpg");}
-}
-.form{background: rgba(255,255,255,0.5);width:400px;margin:120px auto;}
-/*阴影*/
-.fa{display: inline-block;top: 27px;left: 6px;position: relative;color: #ccc;}
-input[type="text"],input[type="password"]{padding-left:26px;}
-.checkbox{padding-left:21px;}
-</style>
+        body {
+            animation-name:myfirst;
+            animation-duration:12s;
+            /*变换时间*/
+            animation-delay:0s;
+            /*动画开始时间*/
+            animation-iteration-count:infinite;
+            /*下一周期循环播放*/
+            animation-play-state:running;
+            /*动画开始运行*/
+        }
+        @keyframes myfirst {
+            0%   {background:url("http://img.pptjia.com/image/20180117/f4b76385a3ccdbac48893cc6418806d5.jpg");}
+            34%  {background:url("http://img17.3lian.com/d/file/201703/03/a86afd917c3dfcecea4147ade4a66b37.jpg");}
+            67%  {background:url("http://img2.3lian.com/2014/f4/139/d/119.jpg");}
+            100% {background:url("http://img17.3lian.com/d/file/201702/16/e442ae6a1ab65033db1c0f2bbe3116d5.jpg");}
+        }
+        .form { 
+            background: rgba(255,255,255,0.5);
+            width:400px;
+            margin:120px auto; 
+        }
+        /*阴影*/
+        .fa {
+            display: inline-block;
+            top: 27px;
+            left: 6px;
+            position: relative;
+            color: #ccc;
+        }
+        input[type = "text"], input[type = "password"] {
+            padding-left: 26px;
+        }
+        .checkbox {
+            padding-left: 21px;
+        }
+    </style>
 </head>
 
 <body>
