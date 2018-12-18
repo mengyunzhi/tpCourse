@@ -1,0 +1,32 @@
+{extend name="index"/}
+{block name="title"}
+贡献值修改
+{/block}
+{block name="content"}
+<div>
+  <h2 style="text-align: center;">贡献值修改</h2>
+<br />
+</div>
+<h4>
+    <form action="{:url('save')}" method="post">
+        <div class="col-md-offset-2">
+            贡献值修改：
+            <select name="add">
+                <option value="true">增加</option>
+                <option value="false">减少</option>
+            </select>
+        </div>
+        <div class="col-md-offset-2">
+            <label for="name">修改额度:</label>
+            <input type="text" name="number" style="width: 70%;">
+        </div>
+        <div class="col-md-offset-2">
+            <label for="name">备注:</label>
+            <input type="text" name="remark" style="width: 70%;">
+        </div>
+        <button type="submit" class="col-md-offset-2 btn btn-default">保存
+        </button>
+        <a href="index" class="btn btn-default">返回</a>
+     </form>
+</h4>
+{/block}

@@ -1,0 +1,36 @@
+{extend name="index"/}
+{block name="title"}
+贡献值管理
+{/block}
+{block name="content"}
+<div>
+  <h2 style="text-align: center;">贡献值管理</h2>
+  <br>
+</div>
+<br>
+<div>
+  <table class="table table-bordered">
+    <tr class="info">
+      <td>姓名</td>
+      <td>贡献值</td>
+      <td>本月累增</td>
+      <td>本周累增</td>
+      <td>当前系数</td>
+      <td>操作</td>
+    </tr>
+    {volist name='student' id='stu'}
+    <tr>
+      <td>{$stu.name}</td>
+      <td>{$stu.contribution}</td>
+      <td>{}</td>
+      <td>{}</td>
+      <td>{$stu.coefficient}</td>
+      <td>
+        <a href="{:url('detail?id=' . $stu->getData('id'))}" class="btn btn-default btn-warning" />查看详细
+        <a href="{:url('edit?id=' . $stu->getData('id'))}" class="btn btn-default btn-info" />修改贡献值
+      </td>
+    </tr>
+    {/volist}
+  </table>
+</div>
+{/block}
