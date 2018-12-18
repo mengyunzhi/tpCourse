@@ -1,0 +1,36 @@
+{extend name="index"/}
+{block name="title"}
+贡献值详情
+{/block}
+{block name="content"}
+<div>
+  <h2 style="text-align: center;">贡献值详情</h2>
+  <br>
+</div>
+<br>
+<div>
+  <table class="table table-bordered">
+    <tr class="info">
+      <td>序号</td>
+      <td>时间</td>
+      <td>标题</td>
+      <td>pull request</td>
+      <td>贡献值</td>
+      <td>备注</td>
+    </tr>
+    {volist name='contri' id='con'}
+    <tr>
+      <td>{$con.id}</td>
+      <td>{$con.time}</td>
+      <td>{$con.title}</td>
+      <td>{$con.pull_request_url}</td>
+      <td>{$con.contribution}</td>
+      <td>{$con.remark}</td>
+    </tr>
+    {/volist}
+  </table>
+</div>
+<div>
+  <a href="{:url('index')}" class="btn btn-default">返回</a>
+</div>
+{/block}
