@@ -27,7 +27,7 @@
       <td>{$stu.coefficient}</td>
       <td>
         <a href="{:url('detail?id=' . $stu->getData('id'))}" class="btn btn-default btn-warning" />查看详细
-        <a href="{:url('edit?id=' . $stu->getData('id'))}" class="btn btn-default btn-info" />修改贡献值
+        <a href="{:url('add?id=' . $stu->getData('id'))}" class="btn btn-default btn-info" />修改贡献值
       </td>
     </tr>
     {/volist}
