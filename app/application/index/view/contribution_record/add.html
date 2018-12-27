@@ -1,0 +1,49 @@
+{extend name="index"/}
+{block name="title"}
+贡献值修改
+{/block}
+{block name="content"}
+{volist name="student" id="stu"}
+<div>
+  <h2 style="text-align: center;">贡献值修改-{$stu.name}</h2>
+  <br />
+</div>
+<form action="{:url('save')}?id={$stu.id}" method="post">
+          <div class="row form-group">            
+        <div class="col-md-5 text-right" style="padding-top: 10px;">
+            <label>贡献值修改：</label>
+        </div>
+        <div class="col-md-3">
+           <select name="edit">
+                <option value="true">增加</option>
+                <option value="false">减少</option>
+            </select>
+        </div>
+    </div>
+    <div class="row form-group">            
+        <div class="col-md-5 text-right" style="padding-top: 10px;">
+            <label>修改额度：</label>
+        </div>
+        <div class="col-md-3">
+            <input type="text" name="number" class="form-control"/>
+        </div>
+    </div>
+    <div class="row form-group">            
+        <div class="col-md-5 text-right" style="padding-top: 10px;">
+            <label>备注：</label>
+        </div>
+        <div class="col-md-3">
+            <input type="text" name="remark" class="form-control"/>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-md-offset-4 col-md-1">
+            <button type="submit" class="btn btn-default"><i class="glyphicon glyphicon-ok"></i>&nbsp;提交</button>
+        </div>
+        <div class="col-md-offset-2 col-md-1">
+            <a href="{:url('index')}" class="btn btn-default"><i class="glyphicon glyphicon-remove"></i>&nbsp;返回</a>
+        </div>
+    </div>
+ </form>
+{/volist}
+{/block}

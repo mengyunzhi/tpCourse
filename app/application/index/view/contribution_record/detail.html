@@ -18,9 +18,9 @@
       <td>贡献值</td>
       <td>备注</td>
     </tr>
-    {volist name='contri' id='con'}
+    {volist name='contri' id='con' key="key"}
     <tr>
-      <td>{$con.id}</td>
+      <td>{$key}</td>
       <td>{$con.time}</td>
       <td>{$con.title}</td>
       <td>{$con.pull_request_url}</td>
