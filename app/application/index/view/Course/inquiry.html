@@ -1,0 +1,237 @@
+{extend name="index"/}
+{block name="title"}
+排课
+{/block}
+{block name="content"}
+<h2 style="text-align:center">排课</h2>
+<hr />
+<form class="form-inline" action="{:url('add_course')}" method="post">
+    <select name="Termid" class="btn btn-default">
+        <option selected="true" value="">
+            2018年秋 </option>
+    </select>
+
+    <button type="submit" class="btn btn-default"><i class="glyphicon glyphicon-search"></i>&nbsp;查询</button>
+</form>
+<hr />
+
+<table class="table table-hover table-bordered">
+    <tr class="info">
+        <th class="col-md-2"></th>
+        <th class="col-md-2">第一节</th>
+        <th class="col-md-2">第二节</th>
+        <th class="col-md-2">第三节</th>
+        <th class="col-md-2">第四节</th>
+        <th class="col-md-2">第五节</th>
+    </tr>
+    <tr>
+        <td>
+            星期一 </td>
+        <td>
+            <a href="{:url('add_course')}" class="btn btn-success">
+                <i class="glyphicon glyphicon-plus"></i>
+            </a>
+        </td>
+        <td>
+            <a href="{:url('add_course')}" class="btn btn-success">
+                <i class="glyphicon glyphicon-plus"></i>
+            </a>
+        </td>
+        <td>
+            <a href="{:url('add_course')}" class="btn btn-success">
+                <i class="glyphicon glyphicon-plus"></i>
+            </a>
+        </td>
+        <td>
+            <a href="{:url('add_course')}" class="btn btn-success">
+                <i class="glyphicon glyphicon-plus"></i>
+            </a>
+        </td>
+        <td>
+            <a href="{:url('add_course')}" class="btn btn-success">
+                <i class="glyphicon glyphicon-plus"></i>
+            </a>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            星期二 </td>
+        <td>
+            <a href="{:url('add_course')}" class="btn btn-success">
+                <i class="glyphicon glyphicon-plus"></i>
+            </a>
+        </td>
+        <td>
+            <a href="{:url('add_course')}" class="btn btn-success">
+                <i class="glyphicon glyphicon-plus"></i>
+            </a>
+        </td>
+        <td>
+            <a href="{:url('add_course')}" class="btn btn-success">
+                <i class="glyphicon glyphicon-plus"></i>
+            </a>
+        </td>
+        <td>
+            <a href="{:url('add_course')}" class="btn btn-success">
+                <i class="glyphicon glyphicon-plus"></i>
+            </a>
+        </td>
+        <td>
+            <a href="{:url('add_course')}" class="btn btn-success">
+                <i class="glyphicon glyphicon-plus"></i>
+            </a>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            星期三 </td>
+        <td>
+            <a href="{:url('add_course')}" class="btn btn-success">
+                <i class="glyphicon glyphicon-plus"></i>
+            </a>
+        </td>
+        <td>
+            <a href="{:url('add_course')}" class="btn btn-success">
+                <i class="glyphicon glyphicon-plus"></i>
+            </a>
+        </td>
+        <td>
+            <a href="{:url('add_course')}" class="btn btn-success">
+                <i class="glyphicon glyphicon-plus"></i>
+            </a>
+        </td>
+        <td>
+            <a href="{:url('add_course')}" class="btn btn-success">
+                <i class="glyphicon glyphicon-plus"></i>
+            </a>
+        </td>
+        <td>
+            <a href="{:url('add_course')}" class="btn btn-success">
+                <i class="glyphicon glyphicon-plus"></i>
+            </a>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            星期四 </td>
+        <td>
+            <a href="{:url('add_course')}" class="btn btn-success">
+                <i class="glyphicon glyphicon-plus"></i>
+            </a>
+        </td>
+        <td>
+            <a href="{:url('add_course')}" class="btn btn-success">
+                <i class="glyphicon glyphicon-plus"></i>
+            </a>
+        </td>
+        <td>
+            <a href="{:url('add_course')}" class="btn btn-success">
+                <i class="glyphicon glyphicon-plus"></i>
+            </a>
+        </td>
+        <td>
+            <a href="{:url('add_course')}" class="btn btn-success">
+                <i class="glyphicon glyphicon-plus"></i>
+            </a>
+        </td>
+        <td>
+            <a href="{:url('add_course')}" class="btn btn-success">
+                <i class="glyphicon glyphicon-plus"></i>
+            </a>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            星期五 </td>
+        <td>
+            <a href="{:url('add_course')}" class="btn btn-success">
+                <i class="glyphicon glyphicon-plus"></i>
+            </a>
+        </td>
+        <td>
+            <a href="{:url('add_course')}" class="btn btn-success">
+                <i class="glyphicon glyphicon-plus"></i>
+            </a>
+        </td>
+        <td>
+            <a href="{:url('add_course')}" class="btn btn-success">
+                <i class="glyphicon glyphicon-plus"></i>
+            </a>
+        </td>
+        <td>
+            <a href="{:url('add_course')}" class="btn btn-success">
+                <i class="glyphicon glyphicon-plus"></i>
+            </a>
+        </td>
+        <td>
+            <a href="{:url('add_course')}" class="btn btn-success">
+                <i class="glyphicon glyphicon-plus"></i>
+            </a>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            星期六 </td>
+        <td>
+            <a href="{:url('add_course')}" class="btn btn-success">
+                <i class="glyphicon glyphicon-plus"></i>
+            </a>
+        </td>
+        <td>
+            <a href="{:url('add_course')}" class="btn btn-success">
+                <i class="glyphicon glyphicon-plus"></i>
+            </a>
+        </td>
+        <td>
+            <a href="{:url('add_course')}" class="btn btn-success">
+                <i class="glyphicon glyphicon-plus"></i>
+            </a>
+        </td>
+        <td>
+            <a href="{:url('add_course')}" class="btn btn-success">
+                <i class="glyphicon glyphicon-plus"></i>
+            </a>
+        </td>
+        <td>
+            <a href="{:url('add_course')}" class="btn btn-success">
+                <i class="glyphicon glyphicon-plus"></i>
+            </a>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            星期日 </td>
+        <td>
+            <a href="{:url('add_course')}" class="btn btn-success">
+                <i class="glyphicon glyphicon-plus"></i>
+            </a>
+        </td>
+        <td>
+            <a href="{:url('add_course')}" class="btn btn-success">
+                <i class="glyphicon glyphicon-plus"></i>
+            </a>
+        </td>
+        <td>
+            <a href="{:url('add_course')}" class="btn btn-success">
+                <i class="glyphicon glyphicon-plus"></i>
+            </a>
+        </td>
+        <td>
+            <a href="{:url('add_course')}" class="btn btn-success">
+                <i class="glyphicon glyphicon-plus"></i>
+            </a>
+        </td>
+        <td>
+            <a href="{:url('add_course')}" class="btn btn-success">
+                <i class="glyphicon glyphicon-plus"></i>
+            </a>
+        </td>
+    </tr>
+</table>
+
+
+</body>
+
+</html>
+
+{/block}

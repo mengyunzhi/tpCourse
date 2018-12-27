@@ -1,11 +1,14 @@
 {extend name="index"/}
 {block name="title"}
-课程管理
+学期管理
 {/block}
 {block name="content"}
-
-<hr />
-
+<div class="row">
+    <div class="col-md-12 text-center">
+        <h2>学期管理</h2>
+    </div>
+    <hr />
+</div>
 <div class="row">
     <div class="col-md-12">
         <hr />
@@ -27,26 +30,23 @@
         <table class="table table-hover table-bordered">
             <tr class="info">
                 <th>序号</th>
-                <th>课程名</th>
+                <th>名称</th>
+                <th>开始时间</th>
+                <th>结束时间</th>
                 <th>操作</th>
             </tr>
-            {volist name="courses" id="course" key="key"}
+            {volist name="terms" id="term" key="key"}
             <tr>
                 <td>{$key}</td>
-                <td>{$course->getData('name')}</td>
-                <td style="width: 570px;">
-                    <a href="{:url('delete?id=' . $course->getData('id'))}" class="btn btn-danger">
-                        <i class="glyphicon glyphicon-trash"></i>
-                        &nbsp;删除课程</a>
-                        <a href="{:url('inquiry')}" class="btn btn-primary" style="background-color: #f0ad4e; border-color: #eea236">
-                            <i class="glyphicon glyphicon-list-alt"></i>
-                            &nbsp;选课
-                    </a>
-                    <a href="{:url('edit?id=' . $course->getData('id'))}" class="btn btn-success" style="background-color: #5cb85c; border-color: #4cae4c">
-                        <i class="glyphicon glyphicon-pencil"></i>
-                        &nbsp;修改课程
-                    </a> 
-                    
+                <td>{$term->getData('name')}</td>
+                <td>{$term->getData('start_time')}</td>
+                <td>{$term->getData('end_time')}</td>
+                <td>
+                    {eq name='term->getData("state")' value='0'}
+                    <a href="{:url('activation?id=' . $term->getData('id'))}"  class="btn btn-sm btn-primary active"><i class="glyphicon glyphicon-ok"></i>&nbsp;激活</a>
+                    {else /}<a class="btn btn-primary"><i class="glyphicon glyphicon-remove"></i>&nbsp;冻结{/eq}
+                    <a href="{:url('edit?id=' . $term->getData('id'))}" class="btn btn-sm btn-primary"><i class="glyphicon glyphicon-pencil"></i>&nbsp;编辑</a>
+                    <a href="{:url('delete?id=' . $term->getData('id'))}" class="btn btn-sm btn-primary"><i class="glyphicon glyphicon-trash"></i>&nbsp;删除</a>
                 </td>
             </tr>
             {/volist}
@@ -55,5 +55,5 @@
 </div>
 {/block}
 {block name="page"}
-{:$courses->render()}
+{:$terms->render()}
 {/block}

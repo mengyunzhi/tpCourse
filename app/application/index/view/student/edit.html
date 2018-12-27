@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="zh-hans">
+<head>
+    <meta charset="UTF-8">
+    <title>编辑</title>
+    <link rel="stylesheet" type="text/css" href="/tpCourse/app/public/static/bootstrap-3.3.7-dist/css/bootstrap.min.css">
+</head>
+
+<body class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <h3 style="text-align:center">编辑用户信息-{$Student->name}</h3>
+        </div>
+    </div>
+    <br>
+    <form action="{:url('update')}" method="post">
+        <div class="row form-group">            
+            <div class="col-md-5 text-right" style="padding-top: 10px;">
+                <label>姓名</label>
+            </div>
+            <div class="col-md-3">
+                <input type="hidden" name="id" value="{$Student->id}" class="form-control">
+                <input type="hidden" name="username" value="{$Student->username}" class="form-control">
+                <input type="text" name="name" value="{$Student->name}" class="form-control">
+            </div>
+        </div>
+        <div class="row form-group">            
+            <div class="col-md-5 text-right" style="padding-top: 10px;">
+                <label>密码</label>
+            </div>
+            <div class="col-md-3">
+                <input type="text" name="password" value="{$Student->password}" class="form-control"/>
+            </div>
+        </div>
+        <div class="row form-group">            
+            <div class="col-md-5 text-right" style="padding-top: 10px;">
+                <label>电话</label>
+            </div>
+            <div class="col-md-3">
+                <input type="text" name="tel" value="{$Student->tel}" class="form-control"/>
+            </div>
+        </div>
+        <div class="row form-group">            
+            <div class="col-md-5 text-right" style="padding-top: 10px;">
+                <label>贡献值系数</label>
+            </div>
+            <div class="col-md-3">
+                <input type="text" name="coefficient" value="{$Student->coefficient}" class="form-control"/>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-7 col-md-1">
+                <button type="submit" class="btn btn-default"><i class="glyphicon glyphicon-ok"></i>&nbsp;提交</button>
+            </div>
+        </div>
+</form>
+</body>
+</html>
