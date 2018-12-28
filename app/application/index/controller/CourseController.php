@@ -12,18 +12,15 @@ class CourseController extends Controller
    
     public function index()                                     //index界面
     {
-        $name       = Request::instance()->get('name');               //课程查询
+        $name         = Request::instance()->get('name');       //课程查询
         
-        $coursepage = Request::instance()->get('pageSize');     //分页
+        $coursepage   = Request::instance()->get('pageSize');   //分页
 
-        if(is_null($coursepage)){                               //判断分页
-            $pageSize = 5;
-        } else {
-            $pageSize = $coursepage;
-        }
-        $Course  = new Course();
+        $pageSize = 5;
+        
+        $Course       = new Course();
 
-        $courses = $Course->search($pageSize , $Course);
+        $courses      = $Course->search($pageSize , $Course);
 
         $this->assign('courses', $courses);                     //将数据传给V层
         
@@ -38,7 +35,7 @@ class CourseController extends Controller
     
     public function save()                                      //add的保存事件
     {
-        $Course       = new Course;                                 // 实例化Course空对象
+        $Course       = new Course;                             // 实例化Course空对象
          
         $Course->name = Request::instance()->post('name');      // 为对象赋值
          
@@ -49,9 +46,9 @@ class CourseController extends Controller
    
     public function delete()                                    //删除事件
     {
-        $id     = Request::instance()->param('id/d');               // 获取pathinfo传入的ID值.
+        $id           = Request::instance()->param('id/d');     // 获取pathinfo传入的ID值.
 
-        $Course = Course::get($id);                             // 获取要删除的对象
+        $Course       = Course::get($id);                       // 获取要删除的对象
  
         if (is_null($Course)) {                                 // 要删除的对象不存在
              return $this->error('不存在id为' . $id . '的教师，删除失败');
@@ -68,7 +65,7 @@ class CourseController extends Controller
     
      public function edit()                                     //修改功能
     {
-        $course       =  Request::instance()->param('id/d');          // 获取传入ID
+        $course       = Request::instance()->param('id/d');     // 获取传入ID
         
         if (is_null($course = course::get($course))) {          // 在Course表模型中获取当前记录
             return '系统未找到ID为' . $course . '的记录';
@@ -93,7 +90,7 @@ class CourseController extends Controller
         return $this->success('操作成功', url('index'));         // 成功进行跳转
     }
     
-    public function inquiry()                                    //查看详情
+    public function inquiry()                                   //查看详情
     {
        
         return $this->fetch();                                   //V层渲染
@@ -101,9 +98,12 @@ class CourseController extends Controller
 
     public function add_course(){
 
-        $Course       = new Course();
-        $Course->name = '课程';
-        var_dump($Course);
+        $id           = Request::instance()->post('id/d');      // 接收数据，获取要更新的关键字信息
+        var_dump($id);
+        $Course       = Course::get($id);                       // 获取当前对象
+        
+        $Course->name = Request::instance()->post('name');      // 写入要更新的数据
+        
         $this->assign('Course' , $Course);
 
         return $this->fetch();

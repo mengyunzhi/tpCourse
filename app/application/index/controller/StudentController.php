@@ -135,6 +135,7 @@ class StudentController extends Controller
         $stu = Request::post();
         $student = Student::get(Request::post('id'));
         var_dump($student);
+
         
         $student->name = $stu['name'];
         $student->password = $stu['password'];

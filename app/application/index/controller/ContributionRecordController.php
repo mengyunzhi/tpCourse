@@ -48,6 +48,7 @@ class ContributionRecordController extends Controller
         // 获取当前id的学生信息
         $student = Student::where('id',$id)->select();
 
+
         // 将学生信息传给V层
         $this->assign('student',$student);
 
@@ -66,7 +67,6 @@ class ContributionRecordController extends Controller
         // 获取当前学生的id
         $student = Student::get(Request::get('id'));
 
-
         // 让原有的学生贡献值加上新增的。
         if ($pos['edit'] == 0) {
             $student['contribution'] += $pos['number'];
@@ -83,7 +83,6 @@ class ContributionRecordController extends Controller
         $contri->title = '贡献值修改';
         $contri->remark = $pos['remark'];
         $contri->student_id = Request::get('id');
-
         $contri->contribution = $pos['number'];
 
         // 保存数据

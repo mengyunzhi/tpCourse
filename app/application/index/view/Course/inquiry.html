@@ -1,9 +1,10 @@
 {extend name="index"/}
 {block name="title"}
-数据结构
+排课
 {/block}
 {block name="content"}
-
+<h2 style="text-align:center">排课</h2>
+<hr />
 <form class="form-inline" action="{:url('add_course')}" method="post">
     <select name="Termid" class="btn btn-default">
         <option selected="true" value="">
@@ -232,5 +233,4 @@
 </body>
 
 </html>
-
 {/block}
