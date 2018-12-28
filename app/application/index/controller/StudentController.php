@@ -135,7 +135,22 @@ class StudentController extends Controller
         $stu = Request::post();
         $student = Student::get(Request::post('id'));
         var_dump($student);
+
+        
+        $student->name = $stu['name'];
+        $student->password = $stu['password'];
+        $student->tel = $stu['tel'];
+        $student->coefficient = $stu['coefficient'];
+
+        $state = $student->save();
+
+        if ($state) {
+            return $this->success('保存成功',url('index'));
+        } else {
+            return $this->error('保存失败');
+        }
     }
+    
     //  public function update()
     // {
     //     // 接收数据，取要更新的关键字信息

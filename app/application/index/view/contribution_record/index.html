@@ -26,8 +26,8 @@
       <td>{$stu->getWeekTotal()}</td>
       <td>{$stu.coefficient}</td>
       <td>
-        <a href="{:url('detail?id=' . $stu->getData('id'))}" class="btn btn-sm btn-warning">查看详细</a>
-        <a href="{:url('add?id=' . $stu->getData('id'))}" class="btn btn-sm btn-info">修改贡献值</a>
+        <a href="{:url('detail?id=' . $stu->getData('id'))}" class="btn btn-sm btn-warning glyphicon glyphicon-list-alt">&nbsp;查看详细</a>&nbsp;
+        <a href="{:url('add?id=' . $stu->getData('id'))}" class="btn btn-sm btn-info glyphicon glyphicon-pencil">&nbsp;修改贡献值</a>
       </td>
     </tr>
     {/volist}
