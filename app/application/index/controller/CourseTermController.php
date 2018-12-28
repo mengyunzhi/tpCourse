@@ -1,8 +1,11 @@
 <?php
 namespace app\index\controller;
+use app\common\model\CourseTerm;
+use think\facade\Request;
 use think\Controller;
+use think\Db;
 
-class Index extends Controller
+class CourseTermController extends Controller
 {
     public function index()
     {

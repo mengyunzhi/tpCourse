@@ -1,0 +1,49 @@
+{extend name="index" /}
+{block name="content"}
+  <div class="row">
+    <div class="col-md-offset-2 col-md-8">
+      <table class="table table-bordered">
+        <tr class="info">
+          <td>周次</td>
+          <td>第一节</td>
+          <td>第二节</td>
+          <td>第三节</td>
+          <td>第四节</td>
+          <td>第五节</td>
+        </tr>
+        <!--  -->
+        <tr>
+          <td>周一</td>
+          <td>
+            {volist name="stu" id="student" key="id"}
+            <button class="btn btn-warning">{$student.name}</button><br />
+            {/volist}
+          </td>
+          <td>
+            {volist name="stu" id="student" key="id"}
+            <button class="btn btn-warning">{$student.name}</button><br />
+            {/volist}
+          </td>
+          <td>
+            {volist name="stu" id="student" key="id"}
+            <button class="btn btn-warning">{$student.name}</button><br />
+            {/volist}
+          </td>
+          <td>
+            {volist name="stu" id="student" key="id"}
+            <button class="btn btn-warning">{$student.name}</button><br />
+            {/volist}
+          </td>
+          <td>
+            {volist name="stu" id="student" key="id"}
+            <button class="btn btn-warning">{$student.name}</button><br />
+            {/volist}
+          </td>
+        </tr>
+      </table>
+      <table class="table table-bordered">
+        ...2
+      </table>
+    </div>
+  </div>
+{/block}

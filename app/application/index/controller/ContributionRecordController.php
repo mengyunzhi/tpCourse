@@ -64,7 +64,8 @@ class ContributionRecordController extends Controller
         $contri = new ContributionRecord;
 
         // 获取当前学生的id
-        $student = Student::get($pos['studentId']);
+        $student = Student::get(Request::get('id'));
+
 
         // 让原有的学生贡献值加上新增的。
         if ($pos['edit'] == 0) {
@@ -81,7 +82,8 @@ class ContributionRecordController extends Controller
         $contri->time = date('Y-m-d H:i:s');
         $contri->title = '贡献值修改';
         $contri->remark = $pos['remark'];
-        $contri->student_id = $pos['studentId'];
+        $contri->student_id = Request::get('id');
+
         $contri->contribution = $pos['number'];
 
         // 保存数据
