@@ -21,20 +21,4 @@ class Course extends Model
         }
         return self::$validate->check($this);
     }
-
-    public function search($pageSize , $Course){
-        if (!empty($Course)) {
-
-            $this->where('name' . $Course );
-        }
-
-        $Courses = $this->paginate($pageSize , false , [
-            'query' => [
-                'name'     => $Course,
-                'pageSize' => $pageSize
-                ],
-            ]);
-            
-        return $Courses;
-    }
 }

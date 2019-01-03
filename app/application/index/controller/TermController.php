@@ -10,27 +10,23 @@ class TermController extends Controller
 {
     public function index()
     {
-        $Term = new Term;
-        // 分页
-        // $terms = $Term->paginate(3);
-        $pageSize = 3; // 每页显示3条数据
-        // 定制查询信息
-            if (!empty($name)) {
-                $Term->where('name', 'like', '%' . $name . '%');
-            }
+        $name         = Request::instance()->get('name');       //课程查询
+        
+        $Termpage   = Request::instance()->get('pageSize');     //分页
 
-            // 按条件查询数据并调用分页
-            $terms = $Term->paginate($pageSize);
+        $pageSize = 5;                                          //页数5条
+        
+        $Term       = new Term();
+                                                                //定制查询条件倒序显示
+        $terms      =$Term->where('name','like','%'.$name .'%')->order('id desc')->paginate($pageSize,false,[
+            'query'=>[
+            'name'=>$name,
+            ],
+        ]);
 
-
-        // 向v层传递数据
-        $this->assign('terms',$terms);
-
-        // 取回打包后的数据
-        $htmls = $this->fetch();
-
-        // 将数据返回给用户
-        return $htmls;
+        $this->assign('terms', $terms);                         //将数据传给V层
+        
+        return $this->fetch();                                  //页面渲染
     }
 
 
@@ -38,7 +34,7 @@ class TermController extends Controller
     public function delete()
     {
         // 获取传入的ID值
-        $id = Request::param('id/d'); // “/d”表示将数值转化为“整形”
+        $id = Request::param('id/d');                           // “/d”表示将数值转化为“整形”
 
         if (is_null($id) || 0 === $id) {
             return $this->error('未获取到ID信息');
@@ -82,8 +78,8 @@ class TermController extends Controller
     public function save()
     {
         // 接收传入数据
-        $postData = $this->request->post();    
-
+        $postData = $_POST;    
+        var_dump($_POST);
         // 实例化Term空对象
         $Term = new Term();
         
@@ -91,11 +87,11 @@ class TermController extends Controller
         $Term->name = $postData['name'];
         $Term->start_time = $postData['start_time'];
         $Term->end_time = $postData['end_time'];
-        // 新增对象至数据表
-        $Term->save();
-
-        // 反馈结果
-        return  $this->success('新增成功', url('index'));
+        
+        if (false   === $Term->save()) {                        // 依据状态定制提示信息
+            return $this->error('添加失败' . $Term->getError());
+        }
+        return $this->success('添加成功', url('index'));         // 成功进行跳转
     }
     public function add()
     {
@@ -123,7 +119,7 @@ class TermController extends Controller
                     $message =  '更新失败' . $Term->getError();
                 }
             } else {
-                throw new \Exception("所更新的记录不存在", 1);   // 调用PHP内置类时，需要在前面加上 \ 
+                throw new \Exception("所更新的记录不存在", 1);    // 调用PHP内置类时，需要在前面加上 \ 
             }
         } catch (\Exception $e) {
 

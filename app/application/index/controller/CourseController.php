@@ -11,16 +11,20 @@ class CourseController extends Controller
 {
    
     public function index()                                     //index界面
-    {
+    {   
         $name         = Request::instance()->get('name');       //课程查询
         
         $coursepage   = Request::instance()->get('pageSize');   //分页
 
-        $pageSize = 5;
+        $pageSize = 5;                                          //页数5条
         
         $Course       = new Course();
-
-        $courses      = $Course->search($pageSize , $Course);
+                                                                //定制查询条件倒序显示
+        $courses      =$Course->where('name','like','%'.$name .'%')->order('id desc')->paginate($pageSize,false,[
+            'query'=>[
+            'name'=>$name,
+            ],
+        ]);
 
         $this->assign('courses', $courses);                     //将数据传给V层
         
@@ -38,10 +42,11 @@ class CourseController extends Controller
         $Course       = new Course;                             // 实例化Course空对象
          
         $Course->name = Request::instance()->post('name');      // 为对象赋值
-         
-        $Course->save();                                        // 执行对象的插入数据操作
  
-        return $this->success('新增成功', url('index'));        //新增成功跳转
+        if (false   === $Course->save()) {                      // 依据状态定制提示信息
+            return $this->error('添加失败' . $Course->getError());
+        }
+        return $this->success('添加成功', url('index'));         // 成功进行跳转
     }
    
     public function delete()                                    //删除事件
@@ -49,17 +54,11 @@ class CourseController extends Controller
         $id           = Request::instance()->param('id/d');     // 获取pathinfo传入的ID值.
 
         $Course       = Course::get($id);                       // 获取要删除的对象
- 
-        if (is_null($Course)) {                                 // 要删除的对象不存在
-             return $this->error('不存在id为' . $id . '的教师，删除失败');
-        }
- 
-        
+
         if (!$Course->delete()) {                               // 删除对象
              return $this->error('删除失败:' . $Course->getError());
         }
- 
-        
+
         return $this->success('删除成功', url('index'));        // 成功进行跳转
      }
     
@@ -99,7 +98,7 @@ class CourseController extends Controller
     public function add_course(){
 
         $id           = Request::instance()->post('id/d');      // 接收数据，获取要更新的关键字信息
-        var_dump($id);
+        
         $Course       = Course::get($id);                       // 获取当前对象
         
         $Course->name = Request::instance()->post('name');      // 写入要更新的数据
@@ -112,20 +111,17 @@ class CourseController extends Controller
     public function save_course(){
 
         $CourseName   = Request::instance()->post('Course');
-        $course       = new Course();
-        $course->name = $CourseName;
-        var_dump($course);
-        if(!$Course->checkName($CourseName)){
 
+        $course       = new Course();
+        
+        $course->name = $CourseName;
+        
+        if(!$Course->checkName($CourseName)){
             return $this->error('保存失败');
         }
-
         if(!$Course->save()){
-
             return $this->error('保存失败' . $Course->getError());
         }
-
         return $this->success('保存成功' , url('index'));
     }
-
 }
