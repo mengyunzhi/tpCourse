@@ -2,7 +2,7 @@
 namespace app\index\controller;
 use think\Controller;
 use think\facade\Request;
-use app\common\model\User; 
+use app\index\model\User; 
 /**
  * 登录
  */

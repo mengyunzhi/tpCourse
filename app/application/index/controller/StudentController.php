@@ -10,28 +10,28 @@ class StudentController extends Controller
     public function index()
     {
         // 获取查询信息
-        $name = input('get.name');
+        $name = Request::instance()->get('name');
+        // 查询框内的默认值
+        $this->assign('names',$name);
+
         $pageSize = 5;  // 每页显示五条数据
         // 实例化学生
         $Student = new Student;
-        // 打印$Student至控制台
-        trace($Student,'debug');
-        $Student = $Student->where('name', 'like', '%' . $name . '%')->paginate($pageSize);
-        // // 按条件查询数据并分页
-        // $Student = $Student->where('name', 'like', '%' . $name . '%')->paginate($pageSize, false, [
-        //     'query' => [
-        //         'name' => $name,
-        //     ]
-        // ]);
+
+        // 如果查询框不为空，则查询
+        if (!empty($name)) {
+            $Student = $Student->where('name', 'like', '%' . $name . '%');
+        }
+        // 按照id进行倒序排列，并保留查询时候的输入内容
+        $Student = $Student->order('id desc')->paginate($pageSize,false, [
+                'query'=>[
+                    'name' => $name,
+                    ]]);
+
         // 向v层传数据
         $this->assign('students',$Student);
         //取回打包后的数据
         $htmls = $this->fetch();
-        // 查询状态为1的用户数据 并且每页显示10条数据
-// // 把分页数据赋值给模板变量list
-// $this->assign('list', $list);
-// // 渲染模板输出
-// return $this->fetch();
         // 将数据返回用户
         return $htmls;
     }

@@ -2,7 +2,7 @@
 namespace app\index\controller;
 use think\Controller;
 use think\facade\Request;
-use app\common\model\Term; 
+use app\index\model\Term; 
 /**
  *学期管理
  */
@@ -20,7 +20,7 @@ class TermController extends Controller
             }
 
             // 按条件查询数据并调用分页
-            $terms = $Term->paginate($pageSize);
+            $terms = $Term->order('id desc')->paginate($pageSize);
 
 
         // 向v层传递数据

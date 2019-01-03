@@ -1,8 +1,8 @@
 <?php
 namespace app\index\controller;
-use app\common\model\courseTerm;
-use app\common\model\Course;
-use app\common\model\Term;
+use app\index\model\courseTerm;
+use app\index\model\Course;
+use app\index\model\Term;
 use think\facade\Request;
 use think\Controller;
 use think\Db;

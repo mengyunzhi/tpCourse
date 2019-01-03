@@ -1,6 +1,6 @@
 <?php
 namespace app\index\controller;
-use app\common\model\CourseTerm;
+use app\index\model\CourseTerm;
 use think\facade\Request;
 use think\Controller;
 use think\Db;
