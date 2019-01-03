@@ -3,28 +3,25 @@
 学期管理
 {/block}
 {block name="content"}
-<h2 style="text-align: center;">添加学期：</h2>
+<h3 style="text-align: center;">添加学期：</h3>
 <br />
 <h4>
     <form action="insert" method="post">
-        <div class="col-md-offset-2" style="padding-left:200px">
+        <div class="col-md-offset-2">
             <label for="name">学期名称:</label>
-            <input type="text" name="name" style="width: 26%;">
+            <input type="text" name="name" style="width: 70%;">
         </div>
-        <div class="col-md-offset-2" style="padding-left:200px">
+        <div class="col-md-offset-2">
             <label for="name">起始时间:</label>
-            <input type="date" name="start_time" style="width: 26%;">
+            <input type="date" name="start_time" style="width: 70%;">
         </div>
-        <div class="col-md-offset-2" style="padding-left:200px">
+        <div class="col-md-offset-2">
             <label for="name">结束时间:</label>
-            <input type="date" name="end_time" style="width: 26%;">
+            <input type="date" name="end_time" style="width: 70%;">
         </div>
-        <div style="text-align:center">
-                <a href="index" class="btn btn-default" style="margin-right:37px"><i class="glyphicon glyphicon-ok" ></i>&nbsp;保存</a>
-            </button>
-            <a href="index" class="btn btn-default" style="margin-left:10px"><i class="glyphicon glyphicon-ok" ></i>&nbsp;返回</a>
-        </div>
-        
+        <button type="submit" class="col-md-offset-2">submit
+        </button>
+        <a href="index" class="btn btn-default">返回</a>
      </form>
 </h4>
 {/block}
