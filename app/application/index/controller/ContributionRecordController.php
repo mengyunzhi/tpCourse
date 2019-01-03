@@ -48,7 +48,6 @@ class ContributionRecordController extends Controller
         // 获取当前id的学生信息
         $student = Student::where('id',$id)->select();
 
-
         // 将学生信息传给V层
         $this->assign('student',$student);
 
