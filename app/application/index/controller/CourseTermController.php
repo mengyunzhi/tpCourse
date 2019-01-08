@@ -1,3 +1,4 @@
+
 <?php
 namespace app\index\controller;
 use app\common\model\CourseTerm;
@@ -11,4 +12,5 @@ class CourseTermController extends Controller
     {
         return $this->fetch();
     }
+
 }

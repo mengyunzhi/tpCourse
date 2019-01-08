@@ -1,6 +1,8 @@
 <?php 
 namespace app\index\controller;
 use app\index\model\Student;
+use app\common\model\Course;
+use app\index\model\StudentCourses;
 use think\Controller;
 use think\facade\Request;
 
@@ -10,28 +12,28 @@ class StudentController extends Controller
     public function index()
     {
         // 获取查询信息
-        $name = input('get.name');
+        $name = Request::instance()->get('name');
+        // 查询框内的默认值
+        $this->assign('names',$name);
+
         $pageSize = 5;  // 每页显示五条数据
         // 实例化学生
         $Student = new Student;
-        // 打印$Student至控制台
-        trace($Student,'debug');
-        $Student = $Student->where('name', 'like', '%' . $name . '%')->paginate($pageSize);
-        // // 按条件查询数据并分页
-        // $Student = $Student->where('name', 'like', '%' . $name . '%')->paginate($pageSize, false, [
-        //     'query' => [
-        //         'name' => $name,
-        //     ]
-        // ]);
+
+        // 如果查询框不为空，则查询
+        if (!empty($name)) {
+            $Student = $Student->where('name', 'like', '%' . $name . '%');
+        }
+        // 按照id进行倒序排列，并保留查询时候的输入内容
+        $Student = $Student->order('id desc')->paginate($pageSize,false, [
+                'query'=>[
+                    'name' => $name,
+                    ]]);
+
         // 向v层传数据
         $this->assign('students',$Student);
         //取回打包后的数据
         $htmls = $this->fetch();
-        // 查询状态为1的用户数据 并且每页显示10条数据
-// // 把分页数据赋值给模板变量list
-// $this->assign('list', $list);
-// // 渲染模板输出
-// return $this->fetch();
         // 将数据返回用户
         return $htmls;
     }
@@ -136,36 +138,25 @@ class StudentController extends Controller
         $student = Student::get(Request::post('id'));
         var_dump($student);
     }
-    //  public function update()
-    // {
-    //     // 接收数据，取要更新的关键字信息
-    //     $id = Request::instance()->post('id/d');
-    //     // 获取当前对象
-    //     $Student = Student::get($id);
-    //     var_dump($Student);
-    //     if (!is_null($Student)) {
-    //         // if (!$this->saveStudent($Student, true)) {
-    //             return $this->error('操作失败' . $Student->getError());
-    //         // }
-    //     } else {
-    //         return $this->error('当前操作的记录不存在');
-    //     }
-    //     // 成功跳转至index触发器
-    //     return $this->success('操作成功', url('index'));
-    // }
 
- //    private function saveStudent($Student, $isUpdate = false)
- //    {
- //        // 写入要更新的数据
- //        var_dump($Student);
- //        $Student->name = Request::instance()->post('name');
- //        $Student->password = Request::post('password');
- //        $Student->username = Request::instance()->post('username');
- //        $Student->tel = Request::instance()->post('tel/d');
- //        $Student->coefficient = Request::instance()->post('coefficient');
- //        var_dump($Student);
-        
- //        // 更新或保存
- //       return $Student->save();
- //    }
+
+    // 选择课程
+    public function change() {
+
+        $student = Student::get(Request::param('id/d'));
+        $courses = Course::order('id desc')->paginate(5);
+        var_dump($student);
+        $this->assign('courses',$courses);
+        $this->assign('student',$student);
+
+        return $this->fetch();
+    }
+
+    public function saveKlass() {
+        // 获取学生id和课程id
+        $stuCourse = Request::post();
+        $studentCourses = new StudentCourses;
+
+    }
+
  }

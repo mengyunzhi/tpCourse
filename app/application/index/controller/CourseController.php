@@ -1,3 +1,4 @@
+
 <?php
 namespace app\index\controller;
 use app\common\model\courseTerm;
@@ -124,4 +125,5 @@ class CourseController extends Controller
         }
         return $this->success('保存成功' , url('index'));
     }
+
 }

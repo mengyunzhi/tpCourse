@@ -9,8 +9,7 @@ class IndexController extends Controller
     public function index()
     {
 
+        return $this->fetch();
 
-       return$this->fetch();
     }
-
 }
