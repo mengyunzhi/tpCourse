@@ -1,0 +1,27 @@
+{extend name="index" /}
+{block name="title"}
+学期管理
+{/block}
+{block name="content"}
+<h2 style="text-align: center;">添加学期：</h2>
+<br />
+    <form action="save" method="post">
+        <div class="col-md-offset-2" style="padding-left:200px">
+            <label for="name">学期名称:</label>
+            <input type="text" name="name" style="width: 30%;">
+        </div>
+        <div class="col-md-offset-2" style="padding-left:200px">
+            <label for="name">起始时间:</label>
+            <input type="date" name="start_time" style="width: 30%;">
+        </div>
+        <div class="col-md-offset-2" style="padding-left:200px">
+            <label for="name">结束时间:</label>
+            <input type="date" name="end_time" style="width: 30%;">
+        </div>
+        <div style="text-align:center">
+                <!-- <a href="{:url('save')}"  </a> -->
+                <button type="submit"style="margin-right:70px" class="btn btn-default"><i class="glyphicon glyphicon-ok" ></i>&nbsp;保存</button>
+            <a href="index" class="btn btn-default" style="margin-left:10px"><i class="glyphicon glyphicon-ok" ></i>&nbsp;返回</a>
+        </div>
+     </form>
+{/block}

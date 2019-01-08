@@ -43,10 +43,11 @@
                 <td>{$term->getData('end_time')}</td>
                 <td>
                     {eq name='term->getData("state")' value='0'}
-                    <a href="{:url('activation?id=' . $term->getData('id'))}"  class="btn btn-sm btn-primary active"><i class="glyphicon glyphicon-ok"></i>&nbsp;激活</a>
-                    {else /}<a class="btn btn-primary"><i class="glyphicon glyphicon-remove"></i>&nbsp;冻结{/eq}
-                    <a href="{:url('edit?id=' . $term->getData('id'))}" class="btn btn-sm btn-primary"><i class="glyphicon glyphicon-pencil"></i>&nbsp;编辑</a>
-                    <a href="{:url('delete?id=' . $term->getData('id'))}" class="btn btn-sm btn-primary"><i class="glyphicon glyphicon-trash"></i>&nbsp;删除</a>
+                    <a href="{:url('activation?id=' . $term->getData('id'))}" class="btn btn-sm btn-primary active">
+                        <i class="glyphicon glyphicon-ok"></i>&nbsp;激活</a>
+                    {else /}<a class="btn btn-sm btn-danger"><i class="glyphicon glyphicon-remove"></i>&nbsp;冻结</a>{/eq}
+                    <a href="{:url('edit?id=' . $term->getData('id'))}" class="btn btn-sm btn-success"><i class="glyphicon glyphicon-pencil"></i>&nbsp;编辑</a>
+                    <a href="{:url('delete?id=' . $term->getData('id'))}" class="btn btn-sm btn-danger"><i class="glyphicon glyphicon-trash"></i>&nbsp;删除</a>
                 </td>
             </tr>
             {/volist}

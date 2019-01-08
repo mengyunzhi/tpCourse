@@ -1,9 +1,13 @@
-<?php
+<?php 
 namespace app\common\model;
-use app\common\validate\CourseValidate;
+use app\common\validate\TermValidate;
 use think\Model;
 
-class Course extends Model
+
+/**
+ * 
+ */
+class Term extends Model
 {
     private static $validate;
 
@@ -17,8 +21,9 @@ class Course extends Model
 
     private function validate() {
         if (is_null(self::$validate)) {
-            self::$validate = new CourseValidate();
+            self::$validate = new TermValidate();
         }
         return self::$validate->check($this);
     }
+
 }
