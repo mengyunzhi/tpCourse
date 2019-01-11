@@ -122,20 +122,8 @@ class StudentController extends Controller
         $stu = Request::post();
         $student = Student::get(Request::post('id'));
         var_dump($student);
-        
-        $student->name = $stu['name'];
-        $student->password = $stu['password'];
-        $student->tel = $stu['tel'];
-        $student->coefficient = $stu['coefficient'];
-
-        $state = $student->save();
-
-        if ($state) {
-            return $this->success('保存成功',url('index'));
-        } else {
-            return $this->error('保存失败');
-        }
     }
+
 
     // 选择课程
     public function change() {
@@ -181,6 +169,7 @@ class StudentController extends Controller
         }
         // 全部成功后返回
         return $this->success('保存成功',url('index'));
+
     }
 
 }

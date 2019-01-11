@@ -1,0 +1,33 @@
+{extend name="index" /}
+{block name="title"}
+学期管理
+{/block}
+{block name="content"}
+<h3 style="text-align: center;">编辑学期：</h3>
+<br />
+<h4>
+    <form action="{:url('update')}" method="post">
+        <div class="col-md-offset-2">
+            <label for="name">学期名称:</label>
+            <input type="hidden" name="id" value="{$Term->getData('id')}">
+            <input type="text" name="name" value="{$Term->getData('name')}" style="width: 70%;">
+        </div>
+        <div class="col-md-offset-2">
+            <label for="name">起始时间:</label>
+            <input type="date" name="start_time" value="{$Term->getData('start_time')}" style="width: 70%;">
+        </div>
+        <div class="col-md-offset-2">
+            <label for="name">结束时间:</label>
+            <input type="date" name="end_time" value="{$Term->getData('end_time')}" style="width: 70%;">
+        </div>
+        <div class="col-md-offset-2">
+            <label for="name">学期状态:</label>
+            <input type="radio" name="state" value="$Term.state" style="width: 20px;">
+            <input type="radio" name="state" value="$Term.state" style="width: 20px;">1
+        </div>
+        <button type="submit" class="col-md-offset-2">submit
+        </button>
+        <a href="index" class="btn btn-default">返回</a>
+     </form>
+</h4>
+{/block}
