@@ -1,6 +1,8 @@
 <?php 
 namespace app\index\controller;
 use app\index\model\Student;
+use app\common\model\Course;
+use app\index\model\StudentCourses;
 use think\Controller;
 use think\Db;
 use think\facade\Request;
@@ -11,28 +13,28 @@ class StudentController extends Controller
     public function index() {
 
         // 获取查询信息
-        $name = input('get.name');
+        $name = Request::instance()->get('name');
+        // 查询框内的默认值
+        $this->assign('names',$name);
+
         $pageSize = 5;  // 每页显示五条数据
         // 实例化学生
         $Student = new Student;
-        // 打印$Student至控制台
-        trace($Student,'debug');
-        $Student = $Student->where('name', 'like', '%' . $name . '%')->paginate($pageSize);
-        // // 按条件查询数据并分页
-        // $Student = $Student->where('name', 'like', '%' . $name . '%')->paginate($pageSize, false, [
-        //     'query' => [
-        //         'name' => $name,
-        //     ]
-        // ]);
+
+        // 如果查询框不为空，则查询
+        if (!empty($name)) {
+            $Student = $Student->where('name', 'like', '%' . $name . '%');
+        }
+        // 按照id进行倒序排列，并保留查询时候的输入内容
+        $Student = $Student->order('id desc')->paginate($pageSize,false, [
+                'query'=>[
+                    'name' => $name,
+                    ]]);
+
         // 向v层传数据
         $this->assign('students',$Student);
         //取回打包后的数据
         $htmls = $this->fetch();
-        // 查询状态为1的用户数据 并且每页显示10条数据
-// // 把分页数据赋值给模板变量list
-// $this->assign('list', $list);
-// // 渲染模板输出
-// return $this->fetch();
         // 将数据返回用户
         return $htmls;
     }
@@ -50,13 +52,25 @@ class StudentController extends Controller
 
         // 实例化
         $student = new Student;
+
         $stu = Request::post();
+
+        if (!is_null($stu)) {
+           $Students = Student::where('username',$stu['username'])->select();
+        }
+        
+        var_dump($Students);
+        var_dump($stu['username']);
+
+        if ($Students == $stu['username']) {
+            return $this->error('用户名已有，保存失败');
+        }
         // 设置属性
         $student->name = $stu['name'];
         $student->password = $stu['password'];
-        $student->username = $stu["username"];
-        $student->tel = $stu["tel"];
-        $student->coefficient = $stu["coefficient"];
+        $student->username = $stu['username'];
+        $student->tel = $stu['tel'];
+        $student->coefficient = $stu['coefficient'];
         // 保存
         $state = $student->save();
 
@@ -120,9 +134,20 @@ class StudentController extends Controller
         $stu = Request::post();
         $student = Student::get(Request::post('id'));
         var_dump($student);
+        
+        $student->name = $stu['name'];
+        $student->password = $stu['password'];
+        $student->tel = $stu['tel'];
+        $student->coefficient = $stu['coefficient'];
+
+        $state = $student->save();
+
+        if ($state) {
+            return $this->success('保存成功',url('index'));
+        } else {
+            return $this->error('保存失败');
+        }
     }
-
-
 
     // 选择课程
     public function change() {
@@ -144,6 +169,11 @@ class StudentController extends Controller
 
         // 获取学生id和课程id
         $stuCourse = Request::post();
+
+        // 验证
+        if (is_null(@$stuCourse['courseId'])) {
+            return $this->error('保存失败，课程未选择');
+        }
 
         // 计算该学生选择课程数
         $num = count($stuCourse['courseId']);
@@ -168,8 +198,6 @@ class StudentController extends Controller
         }
         // 全部成功后返回
         return $this->success('保存成功',url('index'));
-
     }
 
 }
-

@@ -10,15 +10,23 @@
 </div>
 <hr />
 <div class="row">
-   <div class="col-md-2">
-    <input name="name" type="text" class="form-control" placeholder="姓名..." value="{:input('get.name')}">
-    <button type="submit" class="btn btn-default"><i class="glyphicon glyphicon-search"></i>&nbsp;查询</button>
-   </div>
-   <div class="col-md-10">
+   <div class="col-md-11">
        <a href="{:url('add')}" class="btn btn-primary" style="float: right;"><i class="glyphicon glyphicon-plus"></i>&nbsp;增加</a>
    </div>
 </div>
 
+<div class="row">
+    <div class="col-md-8">
+        <form class="form-inline">
+            <div class="form-group">
+                <input name="name" type="text" class="form-control" value="{:$names}" placeholder="姓名..." />
+            </div>
+            <button type="submit" class="btn btn-default"><i class="glyphicon glyphicon-search"></i>&nbsp;查询</button>
+        </form>
+    </div>
+</div>
+
+<hr />
     <table class="table table-hover table-bordered">
         <tr class="info">
             <th width="5%">序号</th>
@@ -49,7 +57,7 @@
                     <i class="glyphicon glyphicon-lock"></i>
                     &nbsp;重置密码
                 </a> &nbsp;
-                <a href="{:url('delete?id=' . $student->getData('id'))}" class="btn btn-primary" style="background-color: #f0ad4e; border-color: #eea236">
+                <a href="{:url('change?id=' . $student->getData('id'))}" class="btn btn-primary" style="background-color: #f0ad4e; border-color: #eea236">
                     <i class="glyphicon glyphicon-list-alt"></i>
                     &nbsp;选课
                 </a> &nbsp;
