@@ -1,4 +1,3 @@
-
 <?php
 namespace app\index\controller;
 use think\Controller;
@@ -156,5 +155,4 @@ class TermController extends Controller
         return $this->success('设置成功', url('index'));
 	
     }
-
 }

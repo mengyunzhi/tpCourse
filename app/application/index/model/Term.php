@@ -1,12 +1,14 @@
-<?php 
-namespace app\index\model;
-use think\Model;
+<?php
+namespace app\index\model ;
 
+use think\Model;
+use app\index\model\Day;
 
 /**
- * hu
- */
+* 学期管理
+*/
 class Term extends Model
 {
+	
     
 }

@@ -21,4 +21,5 @@ class Course extends Model
         }
         return self::$validate->check($this);
     }
+    
 }

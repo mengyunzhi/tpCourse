@@ -16,12 +16,12 @@ class ContributionRecordController extends Controller
     // 主界面
     public function index() {
 
-        // 获取所有学生的信息,按照id倒序排列，每页显示5条信息。
-        $student = Student::order('id desc')->paginate(5);
-        // 将数据传到V层
+        // 获取所有学生的信息
+        $student = Student::select();
         $this->assign('student',$student);
 
         return $this->fetch();
+
     }
 
     // 贡献值详细信息页面
@@ -31,7 +31,7 @@ class ContributionRecordController extends Controller
         $id = Request::param('id');
 
         // 获取贡献值管理的当前学生id的贡献值信息
-        $contri = ContributionRecord::where('student_id',$id)->order('id desc')->paginate(10);
+        $contri = ContributionRecord::where('student_id',$id)->select();
 
         // 数据传递到V层
         $this->assign('contri',$contri);
@@ -68,13 +68,11 @@ class ContributionRecordController extends Controller
 
         // 让原有的学生贡献值加上新增的。
         if ($pos['edit'] == 0) {
-            
             $student['contribution'] += $pos['number'];
 
         } elseif($pos['edit'] == 1) {
 
             $student['contribution'] -= $pos['number'];
-
         } else {
             return 'error1';
         }

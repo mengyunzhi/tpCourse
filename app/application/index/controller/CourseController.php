@@ -1,11 +1,11 @@
-
 <?php
 namespace app\index\controller;
 
-use app\common\model\courseTerm;
 use app\common\model\Course;
+use app\index\model\ClassTime;
 use app\index\model\Term;
-use think\facade\Request;
+use think\Facade\Request;
+
 use think\Controller;
 use think\Db;
 
@@ -14,6 +14,7 @@ class CourseController extends Controller
    
     public function index()                                     //index界面
     {   
+        
         $name         = Request::instance()->get('name');       //课程查询
         
         $coursepage   = Request::instance()->get('pageSize');   //分页
@@ -91,40 +92,39 @@ class CourseController extends Controller
         return $this->success('操作成功', url('index'));         // 成功进行跳转
     }
     
-    public function inquiry()                                   //查看详情
-    {
-       
-        return $this->fetch();                                   //V层渲染
-    }
-
-    public function add_course(){
-
-        $id           = Request::instance()->post('id/d');      // 接收数据，获取要更新的关键字信息
+    public function inquiry(){
         
-        $Course       = Course::get($id);                       // 获取当前对象
-        
-        $Course->name = Request::instance()->post('name');      // 写入要更新的数据
-        
-        $this->assign('Course' , $Course);
-
         return $this->fetch();
     }
+    public function add_course()
+    {
+        $classtime       = new ClassTime;                             // 实例化Course空对象
+        $data = [
+           'day' => null,'period' => '','week' => ''
+        ];
+        // 分批写入 每次最多100条数据
+        $classtime = Db::name('class_time')->data($data)->insertAll();      // 为对象赋值
+        $this->assign('data',$data);
 
-    public function save_course(){
-
-        $CourseName   = Request::instance()->post('Course');
-
-        $course       = new Course();
         
-        $course->name = $CourseName;
-        
-        if(!$Course->checkName($CourseName)){
-            return $this->error('保存失败');
-        }
-        if(!$Course->save()){
-            return $this->error('保存失败' . $Course->getError());
-        }
-        return $this->success('保存成功' , url('index'));
+        return $this->fetch();
     }
-
+    public function save_course()
+    {
+        $classtime = new ClassTime;
+        
+        $ct = Request::instance()->post();      // 为对象赋值
+        
+        
+        var_dump($ct['day']);
+        $classtime->day = $ct['day'];
+        $classtime->period = $ct['period'];
+        $classtime->week = $ct['week'];
+       
+        if (false   === $classtime->save()) {                      // 依据状态定制提示信息
+            return $this->error('添加失败' . $classtime->getError());
+        }
+        return $this->success('添加成功', url('inquiry'));         // 成功进行跳转
+    }
+    
 }
