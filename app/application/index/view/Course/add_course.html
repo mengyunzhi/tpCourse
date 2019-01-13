@@ -5,55 +5,23 @@
 {block name="content"}
 <h2 style="text-align:center">选择周次</h2>
 <hr />
-<form action="{:url('save')}" method="post">
+<form action="{:url('save_course')}" method="post">
 
-    <div class="row col-md-offset-3">
-        <label>课程名：</label>
 
-        <input type="text" value="{$Course->getData('name')}" class="btn btn-default" disabled="true">
-
-        <label>学期：</label>
-
-        <input type="text" value="2018年秋" class="btn btn-default" disabled="true">
-    </div>
 
     <hr>
 
     <div class="row col-md-offset-3">
         <label>星期：</label>
 
-        <select name="day" class="btn btn-default">
-
-            <option selected="true" value="1">
-                一 </option>
-            <option value="2">
-                二 </option>
-            <option value="3">
-                三 </option>
-            <option value="4">
-                四 </option>
-            <option value="5">
-                五 </option>
-            <option value="6">
-                六 </option>
-            <option value="7">
-                日 </option>
-        </select>
+        <input type="text" name="day" value="{$data.day}" placeholder="输入数字1-5" class="btn btn-default" id="input" maxlength="1" onkeyup="if(this.value.length==1){this.value=this.value.replace(/[^19]/g,'')}else{this.value=this.value.replace(/\D/g,'')}"
+            onafterpaste="if(this.value.length==1){this.value=this.value.replace(/[^1-19]/g,'')}else{this.value=this.value.replace(/\D/g,'')}">
+            
 
         <label>节数：</label>
 
-        <select name="knob" class="btn btn-default">
-            <option selected="true" value="1">
-                一 </option>
-            <option value="2">
-                二 </option>
-            <option value="3">
-                三 </option>
-            <option value="4">
-                四 </option>
-            <option value="5">
-                五 </option>
-        </select>
+        <input type="text" name="period"  value="{$data.period}"  placeholder="输入数字1-5" class="btn btn-default" id="input" maxlength="1" onkeyup="if(this.value.length==1){this.value=this.value.replace(/[^19]/g,'')}else{this.value=this.value.replace(/\D/g,'')}"
+            onafterpaste="if(this.value.length==1){this.value=this.value.replace(/[^1-19]/g,'')}else{this.value=this.value.replace(/\D/g,'')}">
     </div>
 
     <hr>
@@ -61,70 +29,7 @@
     <div class="row col-md-offset-3">
         <label class="pull-left">周次：</label>
         <div>
-            <input type="checkbox" name="week[]" id="1" value="1">
-            <label for="1">1</label>
-            &nbsp;&nbsp;&nbsp;&nbsp;
-            <input type="checkbox" name="week[]" id="2" value="2">
-            <label for="2">2</label>
-            &nbsp;&nbsp;&nbsp;&nbsp;
-            <input type="checkbox" name="week[]" id="3" value="3">
-            <label for="3">3</label>
-            &nbsp;&nbsp;&nbsp;&nbsp;
-            <input type="checkbox" name="week[]" id="4" value="4">
-            <label for="4">4</label>
-            &nbsp;&nbsp;&nbsp;&nbsp;
-            <input type="checkbox" name="week[]" id="5" value="5">
-            <label for="5">5</label>
-            &nbsp;&nbsp;&nbsp;&nbsp;
-            <input type="checkbox" name="week[]" id="6" value="6">
-            <label for="6">6</label>
-            &nbsp;&nbsp;&nbsp;&nbsp;
-            <input type="checkbox" name="week[]" id="7" value="7">
-            <label for="7">7</label>
-            &nbsp;&nbsp;&nbsp;&nbsp;
-            <input type="checkbox" name="week[]" id="8" value="8">
-            <label for="8">8</label>
-            &nbsp;&nbsp;&nbsp;&nbsp;
-            <input type="checkbox" name="week[]" id="9" value="9">
-            <label for="9">9</label>
-            &nbsp;&nbsp;&nbsp;&nbsp;
-            <input type="checkbox" name="week[]" id="10" value="10">
-            <label for="10">10</label>
-            &nbsp;&nbsp;&nbsp;&nbsp;
-            <input type="checkbox" name="week[]" id="11" value="11">
-            <label for="11">11</label>
-            &nbsp;&nbsp;&nbsp;&nbsp;
-        </div>
-
-        <div style="padding-left:42px">
-
-            <input type="checkbox" name="week[]" id="12" value="12">
-            <label for="12">12</label>
-            &nbsp;&nbsp;&nbsp;&nbsp;
-            <input type="checkbox" name="week[]" id="13" value="13">
-            <label for="13">13</label>
-            &nbsp;&nbsp;&nbsp;&nbsp;
-            <input type="checkbox" name="week[]" id="14" value="14">
-            <label for="14">14</label>
-            &nbsp;&nbsp;&nbsp;&nbsp;
-            <input type="checkbox" name="week[]" id="15" value="15">
-            <label for="15">15</label>
-            &nbsp;&nbsp;&nbsp;&nbsp;
-            <input type="checkbox" name="week[]" id="16" value="16">
-            <label for="16">16</label>
-            &nbsp;&nbsp;&nbsp;&nbsp;
-            <input type="checkbox" name="week[]" id="17" value="17">
-            <label for="17">17</label>
-            &nbsp;&nbsp;&nbsp;&nbsp;
-            <input type="checkbox" name="week[]" id="18" value="18">
-            <label for="18">18</label>
-            &nbsp;&nbsp;&nbsp;&nbsp;
-            <input type="checkbox" name="week[]" id="19" value="19">
-            <label for="19">19</label>
-            &nbsp;&nbsp;&nbsp;&nbsp;
-            <input type="checkbox" name="week[]" id="20" value="20">
-            <label for="20">20</label>
-            &nbsp;&nbsp;&nbsp;&nbsp;
+            <input type="text" name="week" value="{$data.week}" class="btn btn-default" placeholder="">
         </div>
 
     </div>
@@ -132,7 +37,7 @@
     <hr>
 
     <div class="row col-md-offset-3">
-        <button type="submit" class="btn btn-default"><i class="glyphicon glyphicon-ok"><a href="{:url('inquiry')}"></i>&nbsp;保存</a></button>
+        <button type="submit" class="btn btn-default"><i class="glyphicon glyphicon-ok"></i>&nbsp;保存</button>
     </div>
 </form>
 {/block}

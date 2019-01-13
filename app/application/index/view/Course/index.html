@@ -38,7 +38,7 @@
                     <a href="{:url('delete?id=' . $course->getData('id'))}" class="btn btn-danger">
                         <i class="glyphicon glyphicon-trash"></i>
                         &nbsp;删除课程</a>
-                        <a href="{:url('inquiry')}" class="btn btn-primary" style="background-color: #f0ad4e; border-color: #eea236">
+                        <a href="{:url('inquiry?id='. $course->getData('id'))}" class="btn btn-primary" style="background-color: #f0ad4e; border-color: #eea236">
                             <i class="glyphicon glyphicon-list-alt"></i>
                             &nbsp;选课
                     </a>
