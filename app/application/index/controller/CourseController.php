@@ -5,6 +5,7 @@ use app\common\model\Course;
 use app\index\model\ClassTime;
 use app\index\model\Term;
 use think\Facade\Request;
+
 use think\Controller;
 use think\Db;
 

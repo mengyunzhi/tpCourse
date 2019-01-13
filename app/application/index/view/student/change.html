@@ -10,18 +10,17 @@
     </div>
     <br>
     <form action="{:url('saveKlass')}" method="post">
-            <tr class="info">
-                <td>序号</td>
-                <td class="hidden">id</td>
-                <td>课程名</td>
-            </tr>
+        <div class="form-group">
+        <h4>选择课程：</h4>
+        <input class="hidden" name="studentId" id="{$student->id}" value="{$student->id}">
+        <label class="hidden">学生Id：{$student->id}</label>
+        <br>
         {volist name="courses" id="course" key="key"}
-            <tr>
-                <td>{$key}</td>
-                <td class="hidden">{$course.id}</td>
-                <td>{$course.name}</td>
-            </tr>
+            <input type="checkbox" name="courseId[]" id="{$course.id}" value="{$course.id}">
+            <label>{$course.name}</label>
+            &nbsp;&nbsp;&nbsp;&nbsp;
         {/volist}
+        </div>
         <div class="form-group">
             <div class="col-md-offset-4 col-md-1">
                 <button type="submit" class="btn btn-default"><i class="glyphicon glyphicon-ok"></i>&nbsp;提交</button>
@@ -31,7 +30,4 @@
             </div>
         </div>
 </form>
-{/block}
-{block name="page"}
-    {:$courses->render()}
 {/block}

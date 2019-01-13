@@ -1,6 +1,8 @@
 <?php
 namespace app\index\controller;
 use think\Controller;
+use app\index\model\StudentCourses;
+use think\model\Collection;
 
 /**
  * hu
