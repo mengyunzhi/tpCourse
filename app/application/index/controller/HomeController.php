@@ -9,10 +9,18 @@ use think\Db;
 /**
  * 
  */
-class HomeController extends Controller
+class HomeController extends PassController
 {
     // 获取数据库信息，并传到Ｖ层显示。
     public function index() {
+
+        // 验证用户是否登录
+        $userId = session('userId');
+        if ($userId === null)
+        {
+            return $this->error('请先登录', url('login/index'));
+        }
+
 
         $stu = Db::name('student')->select();
         $this->assign('stu',$stu);

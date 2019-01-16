@@ -9,7 +9,7 @@ use think\model\Collection;
  * 学生课程中间表
  */
 
-class Index extends Controller
+class Index extends PassController
 {
     public function index()
     {

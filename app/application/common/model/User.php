@@ -46,5 +46,12 @@ class User extends \think\Model
         }
         // 还可以借助其它字符串算法，来实现不同的加密。
         return sha1(md5($password) . 'mengyunzhi');
+        
+    }
+    static public function logOut()
+    {
+        // 销毁session中数据
+        session('userId', null);
+        return true;
     }
 }

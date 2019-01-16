@@ -6,7 +6,7 @@ use app\common\model\Term;
 /**
  *学期管理
  */
-class TermController extends Controller
+class TermController extends PassController
 {
     public function index()
     {
@@ -88,7 +88,7 @@ class TermController extends Controller
         $Term->start_time = $postData['start_time'];
         $Term->end_time = $postData['end_time'];
         
-        if (false   === $Term->save()) {                        // 依据状态定制提示信息
+        if (false === $Term->save()) {                        // 依据状态定制提示信息
             return $this->error('添加失败' . $Term->getError());
         }
         return $this->success('添加成功', url('index'));         // 成功进行跳转

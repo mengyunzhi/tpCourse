@@ -10,7 +10,7 @@ use think\model\Collection;
 /**
  * hu
  */
-class ContributionRecordController extends Controller
+class ContributionRecordController extends PassController
 {
     
     // 主界面
