@@ -8,7 +8,7 @@ use think\Db;
 use think\facade\Request;
 
 
-class StudentController extends Controller
+class StudentController extends PassController
 {
     public function index() {
 

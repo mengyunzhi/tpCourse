@@ -9,7 +9,7 @@ use think\Facade\Request;
 use think\Controller;
 use think\Db;
 
-class CourseController extends Controller
+class CourseController extends PassController
 {
    
     public function index()                                     //index界面

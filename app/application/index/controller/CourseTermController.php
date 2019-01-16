@@ -6,7 +6,7 @@ use think\facade\Request;
 use think\Controller;
 use think\Db;
 
-class CourseTermController extends Controller
+class CourseTermController extends PassController
 {
     public function index()
     {
