@@ -11,6 +11,7 @@ class LoginController extends Controller
     // 用户登录表单
     public function index()
     {
+        echo(User::encryptPassword('admin'));
         // 显示登录表单
         return $this->fetch();;
     }
@@ -18,6 +19,7 @@ class LoginController extends Controller
     // 处理用户提交的登录数据
     public function login()
     {
+
         // 接收post信息
         $postData = Request::post();
         // 直接调用M层方法，进行登录。
