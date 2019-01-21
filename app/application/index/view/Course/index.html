@@ -37,14 +37,14 @@
                 <td style="width: 570px;">
                     <a href="{:url('delete?id=' . $course->getData('id'))}" class="btn btn-danger">
                         <i class="glyphicon glyphicon-trash"></i>
-                        &nbsp;删除</a>
-                        <a href="{:url('inquiry?id='. $course->getData('id'))}" class="btn btn-primary" style="background-color: #f0ad4e; border-color: #eea236">
+                        &nbsp;删除课程</a>
+                        <a href="{:url('add_course?id='. $course->getData('id'))}" class="btn btn-primary" style="background-color: #f0ad4e; border-color: #eea236">
                             <i class="glyphicon glyphicon-list-alt"></i>
                             &nbsp;选课
                     </a>
                     <a href="{:url('edit?id=' . $course->getData('id'))}" class="btn btn-success" style="background-color: #5cb85c; border-color: #4cae4c">
                         <i class="glyphicon glyphicon-pencil"></i>
-                        &nbsp;修改
+                        &nbsp;修改课程
                     </a> 
                     
                 </td>

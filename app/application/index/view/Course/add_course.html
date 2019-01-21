@@ -3,25 +3,34 @@
 添加课程时间
 {/block}
 {block name="content"}
-<h2 style="text-align:center">选择周次</h2>
+<h2 style="text-align:center">选择时间</h2>
 <hr />
 <form action="{:url('save_course')}" method="post">
 
 
 
     <hr>
-
+    <div class="row" >
+        <div class="col-md-offset-3">
+                <label>课程名：</label>
+                
+                <input type="text" name="name" value="{$course->getData('name')}" class="btn btn-default"id="disabledInput"disabled>
+                <input type="text" name="course_id" value="{$data.course_id}{$course->getData('id')}" class="btn btn-default hidden" >            
+        </div>
+        
+    </div>
+        
+        <br> 
     <div class="row col-md-offset-3">
+        
         <label>星期：</label>
 
-        <input type="text" name="day" value="{$data.day}" placeholder="输入数字1-5" class="btn btn-default" id="input" maxlength="1" onkeyup="if(this.value.length==1){this.value=this.value.replace(/[^19]/g,'')}else{this.value=this.value.replace(/\D/g,'')}"
-            onafterpaste="if(this.value.length==1){this.value=this.value.replace(/[^1-19]/g,'')}else{this.value=this.value.replace(/\D/g,'')}">
+        <input type="text" name="day" value="{$data.day}" placeholder="输入数字1-5" class="btn btn-default" id="input" maxlength="1" onkeyup="(this.v=function(){this.value=this.value.replace(/[^1-5-]+/,'');}).call(this)" onblur="this.v();" />
             
 
         <label>节数：</label>
 
-        <input type="text" name="period"  value="{$data.period}"  placeholder="输入数字1-5" class="btn btn-default" id="input" maxlength="1" onkeyup="if(this.value.length==1){this.value=this.value.replace(/[^19]/g,'')}else{this.value=this.value.replace(/\D/g,'')}"
-            onafterpaste="if(this.value.length==1){this.value=this.value.replace(/[^1-19]/g,'')}else{this.value=this.value.replace(/\D/g,'')}">
+        <input type="text" name="period" value="{$data.period}" placeholder="输入数字1-5" class="btn btn-default" id="input" maxlength="1" onkeyup="(this.v=function(){this.value=this.value.replace(/[^1-5-]+/,'');}).call(this)" onblur="this.v();" />           
     </div>
 
     <hr>
@@ -29,7 +38,32 @@
     <div class="row col-md-offset-3">
         <label class="pull-left">周次：</label>
         <div>
-            <input type="text" name="week" value="{$data.week}" class="btn btn-default" placeholder="">
+            
+            <input type="checkbox" name="week[]" id="{$classtime.week}" value="1"><label>1</label>&nbsp;&nbsp;
+            <input type="checkbox" name="week[]" id="{$classtime.week}" value="2"><label>2</label>&nbsp;&nbsp;
+            <input type="checkbox" name="week[]" id="{$classtime.week}" value="3"><label>3</label>&nbsp;&nbsp;
+            <input type="checkbox" name="week[]" id="{$classtime.week}" value="4"><label>4</label>&nbsp;&nbsp;
+            <input type="checkbox" name="week[]" id="{$classtime.week}" value="5"><label>5</label>&nbsp;&nbsp;
+            <input type="checkbox" name="week[]" id="{$classtime.week}" value="6"><label>6</label>&nbsp;&nbsp;
+            <input type="checkbox" name="week[]" id="{$classtime.week}" value="7"><label>7</label>&nbsp;&nbsp;
+            <input type="checkbox" name="week[]" id="{$classtime.week}" value="8"><label>8</label>&nbsp;&nbsp;
+            <input type="checkbox" name="week[]" id="{$classtime.week}" value="9"><label>9</label>&nbsp;&nbsp;
+            <input type="checkbox" name="week[]" id="{$classtime.week}" value="10"><label>10</label>&nbsp;&nbsp;
+            <input type="checkbox" name="week[]" id="{$classtime.week}" value="11"><label>11</label>&nbsp;&nbsp;
+            <input type="checkbox" name="week[]" id="{$classtime.week}" value="12"><label>12</label>&nbsp;&nbsp;
+            <input type="checkbox" name="week[]" id="{$classtime.week}" value="13"><label>13</label>&nbsp;&nbsp;
+            <input type="checkbox" name="week[]" id="{$classtime.week}" value="14"><label>14</label>&nbsp;&nbsp;
+            <input type="checkbox" name="week[]" id="{$classtime.week}" value="15"><label>15</label>&nbsp;&nbsp;
+            <input type="checkbox" name="week[]" id="{$classtime.week}" value="16"><label>16</label>&nbsp;&nbsp;
+            <input type="checkbox" name="week[]" id="{$classtime.week}" value="17"><label>17</label>&nbsp;&nbsp;
+            <input type="checkbox" name="week[]" id="{$classtime.week}" value="18"><label>18</label>&nbsp;&nbsp;
+            <input type="checkbox" name="week[]" id="{$classtime.week}" value="19"><label>19</label>&nbsp;&nbsp;
+            <input type="checkbox" name="week[]" id="{$classtime.week}" value="20"><label>20</label>&nbsp;&nbsp;
+            
+
+
+            &nbsp;&nbsp;&nbsp;&nbsp;
+        
         </div>
 
     </div>

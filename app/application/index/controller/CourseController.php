@@ -4,12 +4,12 @@ namespace app\index\controller;
 use app\common\model\Course;
 use app\index\model\ClassTime;
 use app\index\model\Term;
-use think\Facade\Request;
-
+use think\facade\Request;
+use think\Validate;
 use think\Controller;
 use think\Db;
 
-class CourseController extends PassController
+class CourseController extends Controller
 {
    
     public function index()                                     //index界面
@@ -46,8 +46,28 @@ class CourseController extends PassController
          
         $Course->name = Request::instance()->post('name');      // 为对象赋值
  
+        
+        $rule = [
+            'name'  => 'require|max:25',
+        ];
+       
+        
+        $msg = [
+            'name.require' => '名称必须',
+            'name.max'     => '名称最多不能超过25个字符',
+            
+        ];
+
+        $data = [
+            'name' => '',
+        ];
+        $validate   = Validate::make($rule,$msg);
+        $result = $validate->check($data);
+
+        
+
         if (false   === $Course->save()) {                      // 依据状态定制提示信息
-            return $this->error('添加失败' . $Course->getError());
+            return $this->error('' . $validate->getError());
         }
         return $this->success('添加成功', url('index'));         // 成功进行跳转
     }
@@ -92,39 +112,117 @@ class CourseController extends PassController
         return $this->success('操作成功', url('index'));         // 成功进行跳转
     }
     
-    public function inquiry(){
+    public function inquiry()
+    {
         
+        $id       = Request::instance()->param('id/d');     // 获取传入ID
+        
+        $course       = Course::get($id);                       // 获取当前对象
+
+        $this->assign('course',$course);
         return $this->fetch();
+    }
+    public function updateinquiry()
+    {
+        $id           = Request::instance()->post('id/d');      // 接收数据，获取要更新的关键字信息
+        
+        $course       = Course::get($id);                       // 获取当前对象
+        
+        $course->name = Request::instance()->post('name');      // 写入要更新的数据
+        $this->fetch();    
     }
     public function add_course()
     {
         $classtime       = new ClassTime;                             // 实例化Course空对象
         $data = [
-           'day' => null,'period' => '','week' => ''
+           'day' => '','period' => '','week' => '','course_id' => '',
         ];
         // 分批写入 每次最多100条数据
         $classtime = Db::name('class_time')->data($data)->insertAll();      // 为对象赋值
         $this->assign('data',$data);
 
+        // 获取当前点击的学生id
+        $classtime = ClassTime::get(Request::param('id/d'));
+        
+
+        // 将获取的数据传到V层
+        $this->assign('classtime',$classtime);
+        
+        $id       = Request::instance()->param('id/d');     // 获取传入ID
+        
+        $course       = Course::get($id);                       // 获取当前对象
+
+        $this->assign('course',$course);
         
         return $this->fetch();
+    
     }
     public function save_course()
     {
+        
+
         $classtime = new ClassTime;
         
         $ct = Request::instance()->post();      // 为对象赋值
         
+        //预先定义一下才可以
         
-        var_dump($ct['day']);
         $classtime->day = $ct['day'];
         $classtime->period = $ct['period'];
         $classtime->week = $ct['week'];
-       
-        if (false   === $classtime->save()) {                      // 依据状态定制提示信息
-            return $this->error('添加失败' . $classtime->getError());
+        $classtime->course_id = $ct['course_id'];
+        
+        $rule = [
+            'day'       => 'require|max:5',
+            'period'    => 'require|max:5',
+            'week'      => 'require|max:60',
+            'course_id' => 'require|max:999'
+        ];
+        $msg = [
+            'day'       => '星期不能为空',
+            'period'    => '节数不能为空',
+            'week'      => '周次必选',
+            'course_id' => 'course_id不能为空'
+        ];
+        $ct = [
+            'day'       => $ct['day'],
+            'period'    => $ct['period'],
+            'week'      => $ct['week'],
+            'course_id' => $ct['course_id']
+        ];
+        
+        $validate   = Validate::make($rule,$msg);
+        $result = $validate->check($ct);
+
+        if(!$result) {
+        return $validate->getError();
         }
-        return $this->success('添加成功', url('inquiry'));         // 成功进行跳转
+        // 计算该学生选择课程数
+        $num = count($ct['week']);
+        
+        for ($i=0; $i < $num ; $i++) { 
+
+         // 实例化新的学生课程关系表
+         $classtime = new ClassTime;
+
+         // 将学生Id和课程Id存储到数据表
+         $classtime->week = $ct['week'][$i];
+         $classtime->day = $ct['day'];
+         $classtime->period = $ct['period'];
+         $classtime->course_id = $ct['course_id'];
+         // 保存并验证
+         
+         $state = $classtime->save();
+
+         // 若失败则跳出循环并返回
+         if (!$state) {
+
+             return $this->error('保存失败');
+         }
+     }
+     //全部成功后返回
+     return $this->success('保存成功',url('index'));
+   
     }
     
 }
