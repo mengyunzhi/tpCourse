@@ -79,7 +79,7 @@ class TermController extends PassController
     {
         // 接收传入数据
         $postData = $_POST;    
-        var_dump($_POST);
+        
         // 实例化Term空对象
         $Term = new Term();
         
@@ -154,5 +154,17 @@ class TermController extends PassController
         // 实现url跳转('index')
         return $this->success('设置成功', url('index'));
 	
+    }
+    public function closedterm(){
+        // 把某学期状态设置为1
+        $id = Request::instance()->param('id/d');
+        
+        $Term = Term::get($id);
+        $Term->state = 0;
+
+        // 保存
+        $Term->save();
+        // 实现url跳转('index')
+        return $this->success('设置成功', url('index'));
     }
 }

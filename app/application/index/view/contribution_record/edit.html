@@ -8,7 +8,7 @@
 <br />
 </div>
 <h4>
-    <form action="{:url('save')}" method="post">
+    <form action="{:url('save')}" method="post" style="text-align: center;">
         <div class="col-md-offset-2">
             贡献值修改：
             <select name="add">
@@ -18,15 +18,16 @@
         </div>
         <div class="col-md-offset-2">
             <label for="name">修改额度:</label>
-            <input type="text" name="number" style="width: 70%;">
+            <input type="text" name="number" style="width: 10%;" class="btn btn-default">
         </div>
         <div class="col-md-offset-2">
             <label for="name">备注:</label>
-            <input type="text" name="remark" style="width: 70%;">
+            <input type="text" name="remark" style="width: 10%;" class="btn btn-default">
+            <div style="text-align:center">
+                <!-- <a href="{:url('save')}"  </a> -->
+                <button type="submit"style="margin-right:70px" class="btn btn-default"><i class="glyphicon glyphicon-ok" ></i>&nbsp;保存</button>
+            <a href="index" class="btn btn-default" style="margin-left:10px"><i class="glyphicon glyphicon-ok" ></i>&nbsp;返回</a>
         </div>
-        <button type="submit" class="col-md-offset-2 btn btn-default">保存
-        </button>
-        <a href="index" class="btn btn-default">返回</a>
      </form>
 </h4>
 {/block}
