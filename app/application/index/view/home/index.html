@@ -11,38 +11,18 @@
           <td>第四节</td>
           <td>第五节</td>
         </tr>
-        <!--  -->
+        {volist name="lists" id="list"}
         <tr>
-          <td>周一</td>
+          <td class="info">{$week[$i]}</td>
+          {volist name="list" id="period"}
           <td>
-            {volist name="stu" id="student" key="id"}
-            <button class="btn btn-warning">{$student.name}</button><br />
+            {volist name="period" id="student"}
+            <label>{$student.name}&nbsp{$student.state}</label><br />
             {/volist}
           </td>
-          <td>
-            {volist name="stu" id="student" key="id"}
-            <button class="btn btn-warning">{$student.name}</button><br />
-            {/volist}
-          </td>
-          <td>
-            {volist name="stu" id="student" key="id"}
-            <button class="btn btn-warning">{$student.name}</button><br />
-            {/volist}
-          </td>
-          <td>
-            {volist name="stu" id="student" key="id"}
-            <button class="btn btn-warning">{$student.name}</button><br />
-            {/volist}
-          </td>
-          <td>
-            {volist name="stu" id="student" key="id"}
-            <button class="btn btn-warning">{$student.name}</button><br />
-            {/volist}
-          </td>
+          {/volist}
         </tr>
-      </table>
-      <table class="table table-bordered">
-        ...2
+        {/volist}
       </table>
     </div>
   </div>
