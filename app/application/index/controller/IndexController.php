@@ -15,10 +15,8 @@ class IndexController extends PassController
         $weeks = Week::getWeeks();
        
         $this->assign('weeks', $weeks);
-        // $students = new Student;
-        // $students = Db::table('Student')->field('name')->limit(20)->select();
-        
-        // $this->assign('students', $students);
+        $students = Db::table('Student')->field('name')->limit(20)->select();
+        $this->assign('students', $students);
         return $this->fetch();
     }
 

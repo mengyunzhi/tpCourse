@@ -19,7 +19,9 @@
                 <td>星期{$week->name}</td>
                 {volist name="week->periods" id="period"}
                     <td>
-                        
+                        {volist name="students" id="student"}
+                        <p>{$student.name}</p>
+                        {/volist}
                     </td>
                 {/volist}
                       

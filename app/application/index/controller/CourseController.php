@@ -143,7 +143,6 @@ class CourseController extends Controller
 
         // 获取当前点击的学生id
         $classtime = ClassTime::get(Request::param('id/d'));
-        
 
         // 将获取的数据传到V层
         $this->assign('classtime',$classtime);
@@ -159,7 +158,6 @@ class CourseController extends Controller
     }
     public function save_course()
     {
-        
 
         $classtime = new ClassTime;
         
@@ -175,7 +173,9 @@ class CourseController extends Controller
         $rule = [
             'day'       => 'require|max:5',
             'period'    => 'require|max:5',
-            'week'      => 'require|max:60',
+
+            'week'      => 'require|max:99',
+
             'course_id' => 'require|max:999'
         ];
         $msg = [
@@ -201,10 +201,8 @@ class CourseController extends Controller
         $num = count($ct['week']);
         
         for ($i=0; $i < $num ; $i++) { 
-
          // 实例化新的学生课程关系表
          $classtime = new ClassTime;
-
          // 将学生Id和课程Id存储到数据表
          $classtime->week = $ct['week'][$i];
          $classtime->day = $ct['day'];
@@ -212,15 +210,20 @@ class CourseController extends Controller
          $classtime->course_id = $ct['course_id'];
          // 保存并验证
          
-         $state = $classtime->save();
-
+         $save = $classtime->save();
          // 若失败则跳出循环并返回
-         if (!$state) {
-
+         if (!$save) {
              return $this->error('保存失败');
          }
      }
      //全部成功后返回
+        $state = Db::table('term')->where('state', 1)->value('state');
+        if($state === 0){
+            return $this->error('所选课程的学期为空无法保存');
+        }
+
+     //全部成功后返回
+
      return $this->success('保存成功',url('index'));
    
     }

@@ -59,8 +59,7 @@ class StudentController extends Controller
            $Students = Student::where('username',$stu['username'])->select();
         }
         
-        var_dump($Students);
-        var_dump($stu['username']);
+        
 
         if ($Students == $stu['username']) {
             return $this->error('用户名已有，保存失败');
@@ -133,7 +132,7 @@ class StudentController extends Controller
 
         $stu = Request::post();
         $student = Student::get(Request::post('id'));
-        var_dump($student);
+        
         
         $student->name = $stu['name'];
         $student->password = $stu['password'];

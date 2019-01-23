@@ -13,7 +13,7 @@
     <div class="row" >
         <div class="col-md-offset-3">
                 <label>课程名：</label>
-                
+
                 <input type="text" name="name" value="{$course->getData('name')}" class="btn btn-default"id="disabledInput"disabled>
                 <input type="text" name="course_id" value="{$data.course_id}{$course->getData('id')}" class="btn btn-default hidden" >            
         </div>
@@ -25,12 +25,16 @@
         
         <label>星期：</label>
 
-        <input type="text" name="day" value="{$data.day}" placeholder="输入数字1-5" class="btn btn-default" id="input" maxlength="1" onkeyup="(this.v=function(){this.value=this.value.replace(/[^1-5-]+/,'');}).call(this)" onblur="this.v();" />
+
+        <input type="text" name="day" value="{$data.day}" style="text-align:left" placeholder="输入数字1-7" class="btn btn-default" id="input" maxlength="1" onkeyup="(this.v=function(){this.value=this.value.replace(/[^1-7-]+/,'');}).call(this)" onblur="this.v();" />
+
             
 
         <label>节数：</label>
 
+
         <input type="text" name="period" value="{$data.period}" placeholder="输入数字1-5" class="btn btn-default" id="input" maxlength="1" onkeyup="(this.v=function(){this.value=this.value.replace(/[^1-5-]+/,'');}).call(this)" onblur="this.v();" />           
+
     </div>
 
     <hr>
@@ -69,9 +73,11 @@
     </div>
 
     <hr>
-
-    <div class="row col-md-offset-3">
-        <button type="submit" class="btn btn-default"><i class="glyphicon glyphicon-ok"></i>&nbsp;保存</button>
+    
+    <div class="row" style="padding-left: 25%">
+        <button type="submit" class="btn btn-default"><i class="glyphicon glyphicon-ok" ></i>&nbsp;保存</button>
+        &nbsp&nbsp&nbsp&nbsp &nbsp&nbsp&nbsp&nbsp &nbsp&nbsp&nbsp&nbsp &nbsp&nbsp&nbsp&nbsp
+        <a href="{:url('index')}" class="btn btn-default"><i class="glyphicon glyphicon-remove"></i>&nbsp;返回</a>
     </div>
 </form>
 {/block}

@@ -3,6 +3,7 @@
 namespace app\index\model;
 
 use think\Model;
+use think\Db;
 
 class Week
 {
@@ -19,8 +20,12 @@ class Week
             $week->periods = $periods;
             
             array_push($weeks, $week);
-            
+        
         }
         return $weeks;
+    }
+    static public function getperiod()
+    {
+       
     }
 }
