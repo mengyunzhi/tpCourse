@@ -38,4 +38,33 @@ class LoginController extends Controller
             return $this->error('注销失败',url('index/index'));
         }
     }
+
+    public function signup()
+    {
+        return $this->fetch();
+    }
+
+    public function save() 
+    {
+
+        // 实例化
+        $User = new User;
+
+        $user = Request::post();
+
+        $password = sha1(md5($user['password']) . 'mengyunzhi');
+        // 设置属性
+        $User->name = $user['name'];
+        $User->password = $password;
+        $User->username = $user['username'];
+
+        // 保存
+        $state = $User->save();
+
+        if ($state) {
+            return $this->success('保存成功',url('index'));
+        } else {
+            return $this->error('保存失败');
+        }
+    }
 }
