@@ -15,7 +15,8 @@ class Course extends Model
         return parent::save($data, $where, $sequence);
     }
 
-    private function validate() {
+    private function validate() 
+    {
         if (is_null(self::$validate)) {
             self::$validate = new CourseValidate();
         }

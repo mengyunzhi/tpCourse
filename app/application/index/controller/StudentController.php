@@ -10,7 +10,8 @@ use think\facade\Request;
 
 class StudentController extends Controller
 {
-    public function index() {
+    public function index() 
+    {
 
         // 获取查询信息
         $name = Request::instance()->get('name');
@@ -40,16 +41,16 @@ class StudentController extends Controller
     }
     
     // 增加
-    public function add() {
-
+    public function add() 
+    {
         // 调用add模板
         return $this->fetch();
         
     }
 
     // add界面的保存
-    public function save() {
-
+    public function save() 
+    {
         // 实例化
         $student = new Student;
 
@@ -82,8 +83,8 @@ class StudentController extends Controller
     }
 
     // 编辑
-    public function edit() {
-
+    public function edit() 
+    {
         // 获取传入ID
          $id=request()->param('id/d');
         // $id = Request::instance()->param('id/d');
@@ -105,8 +106,8 @@ class StudentController extends Controller
         return $htmls;
     }
     // 删除
-    public function delete() {
-
+    public function delete() 
+    {
         // 实例化请求类
         $Request = Request::instance();
         // 获取get数据
@@ -129,8 +130,8 @@ class StudentController extends Controller
         return $this->success('删除成功', $Request->header('referer'));
     }
 
-    public function update() {
-
+    public function update() 
+    {
         $stu = Request::post();
         $student = Student::get(Request::post('id'));
         var_dump($student);
@@ -150,8 +151,8 @@ class StudentController extends Controller
     }
 
     // 选择课程
-    public function change() {
-
+    public function change() 
+    {
         // 获取当前点击的学生id
         $student = Student::get(Request::param('id/d'));
         // 获取数据表中的所有课程id
@@ -165,8 +166,8 @@ class StudentController extends Controller
     }
 
     // 选课界面的保存选项
-    public function saveKlass() {
-
+    public function saveKlass() 
+    {
         // 获取学生id和课程id
         $stuCourse = Request::post();
 
@@ -178,7 +179,7 @@ class StudentController extends Controller
         // 计算该学生选择课程数
         $num = count($stuCourse['courseId']);
 
-        for ($i=0; $i < $num ; $i++) { 
+        for ($i=0; $i < $num; $i++) { 
 
             // 实例化新的学生课程关系表
             $studentCourses = new StudentCourses;
@@ -201,8 +202,8 @@ class StudentController extends Controller
     }
 
     // 激活
-    public function activation() {
-
+    public function activation() 
+    {
        // 把学生状态设置为1
         $id = Request::instance()->param('id/d');
         
@@ -217,8 +218,8 @@ class StudentController extends Controller
     }
 
     // 冻结
-    public function freeze() {
-
+    public function freeze() 
+    {
        // 把学生状态设置为0
         $id = Request::instance()->param('id/d');
         

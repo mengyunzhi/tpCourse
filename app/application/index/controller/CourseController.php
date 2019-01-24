@@ -15,17 +15,17 @@ class CourseController extends Controller
     public function index()                                     //index界面
     {   
         
-        $name         = Request::instance()->get('name');       //课程查询
+        $name = Request::instance()->get('name');       //课程查询
         
-        $coursepage   = Request::instance()->get('pageSize');   //分页
+        $coursepage = Request::instance()->get('pageSize');   //分页
 
         $pageSize = 5;                                          //页数5条
         
-        $Course       = new Course();
+        $Course = new Course();
                                                                 //定制查询条件倒序显示
-        $courses      =$Course->where('name','like','%'.$name .'%')->order('id desc')->paginate($pageSize,false,[
-            'query'=>[
-            'name'=>$name,
+        $courses = $Course->where('name','like','%'.$name .'%')->order('id desc')->paginate($pageSize,false,[
+                'query'=>[
+                'name'=>$name,
             ],
         ]);
 
@@ -42,7 +42,7 @@ class CourseController extends Controller
     
     public function save()                                      //add的保存事件
     {
-        $Course       = new Course;                             // 实例化Course空对象
+        $Course = new Course;                             // 实例化Course空对象
          
         $Course->name = Request::instance()->post('name');      // 为对象赋值
  
@@ -61,12 +61,12 @@ class CourseController extends Controller
         $data = [
             'name' => '',
         ];
-        $validate   = Validate::make($rule,$msg);
+        $validate = Validate::make($rule,$msg);
         $result = $validate->check($data);
 
         
 
-        if (false   === $Course->save()) {                      // 依据状态定制提示信息
+        if (false === $Course->save()) {                      // 依据状态定制提示信息
             return $this->error('' . $validate->getError());
         }
         return $this->success('添加成功', url('index'));         // 成功进行跳转
@@ -74,9 +74,9 @@ class CourseController extends Controller
    
     public function delete()                                    //删除事件
     {
-        $id           = Request::instance()->param('id/d');     // 获取pathinfo传入的ID值.
+        $id = Request::instance()->param('id/d');     // 获取pathinfo传入的ID值.
 
-        $Course       = Course::get($id);                       // 获取要删除的对象
+        $Course = Course::get($id);                       // 获取要删除的对象
 
         if (!$Course->delete()) {                               // 删除对象
              return $this->error('删除失败:' . $Course->getError());
@@ -87,7 +87,7 @@ class CourseController extends Controller
     
      public function edit()                                     //修改功能
     {
-        $course       = Request::instance()->param('id/d');     // 获取传入ID
+        $course = Request::instance()->param('id/d');     // 获取传入ID
         
         if (is_null($course = course::get($course))) {          // 在Course表模型中获取当前记录
             return '系统未找到ID为' . $course . '的记录';
@@ -100,9 +100,9 @@ class CourseController extends Controller
     
     public function update()                                    //修改更新事件
     {
-        $id           = Request::instance()->post('id/d');      // 接收数据，获取要更新的关键字信息
+        $id = Request::instance()->post('id/d');      // 接收数据，获取要更新的关键字信息
         
-        $Course       = Course::get($id);                       // 获取当前对象
+        $Course = Course::get($id);                       // 获取当前对象
         
         $Course->name = Request::instance()->post('name');      // 写入要更新的数据
         
@@ -115,25 +115,27 @@ class CourseController extends Controller
     public function inquiry()
     {
         
-        $id       = Request::instance()->param('id/d');     // 获取传入ID
+        $id = Request::instance()->param('id/d');     // 获取传入ID
         
-        $course       = Course::get($id);                       // 获取当前对象
+        $course = Course::get($id);                       // 获取当前对象
 
         $this->assign('course',$course);
         return $this->fetch();
     }
+
     public function updateinquiry()
     {
-        $id           = Request::instance()->post('id/d');      // 接收数据，获取要更新的关键字信息
+        $id = Request::instance()->post('id/d');      // 接收数据，获取要更新的关键字信息
         
-        $course       = Course::get($id);                       // 获取当前对象
+        $course = Course::get($id);                       // 获取当前对象
         
         $course->name = Request::instance()->post('name');      // 写入要更新的数据
         $this->fetch();    
     }
+
     public function add_course()
     {
-        $classtime       = new ClassTime;                             // 实例化Course空对象
+        $classtime = new ClassTime;                             // 实例化Course空对象
         $data = [
            'day' => '','period' => '','week' => '','course_id' => '',
         ];
@@ -148,15 +150,16 @@ class CourseController extends Controller
         // 将获取的数据传到V层
         $this->assign('classtime',$classtime);
         
-        $id       = Request::instance()->param('id/d');     // 获取传入ID
+        $id = Request::instance()->param('id/d');     // 获取传入ID
         
-        $course       = Course::get($id);                       // 获取当前对象
+        $course = Course::get($id);                       // 获取当前对象
 
         $this->assign('course',$course);
         
         return $this->fetch();
     
     }
+
     public function save_course()
     {
         
@@ -191,7 +194,7 @@ class CourseController extends Controller
             'course_id' => $ct['course_id']
         ];
         
-        $validate   = Validate::make($rule,$msg);
+        $validate = Validate::make($rule,$msg);
         $result = $validate->check($ct);
 
         if(!$result) {
@@ -200,7 +203,7 @@ class CourseController extends Controller
         // 计算该学生选择课程数
         $num = count($ct['week']);
         
-        for ($i=0; $i < $num ; $i++) { 
+        for ($i=0; $i < $num; $i++) { 
 
          // 实例化新的学生课程关系表
          $classtime = new ClassTime;

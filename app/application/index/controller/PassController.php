@@ -19,5 +19,6 @@ class PassController extends Controller
 
     public function index()
     {
+        
     }
 }

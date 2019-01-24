@@ -10,17 +10,17 @@ class TermController extends PassController
 {
     public function index()
     {
-        $name         = Request::instance()->get('name');       //课程查询
+        $name = Request::instance()->get('name');       //课程查询
         
-        $Termpage   = Request::instance()->get('pageSize');     //分页
+        $Termpage = Request::instance()->get('pageSize');     //分页
 
         $pageSize = 5;                                          //页数5条
         
-        $Term       = new Term();
+        $Term = new Term();
                                                                 //定制查询条件倒序显示
-        $terms      =$Term->where('name','like','%'.$name .'%')->order('id desc')->paginate($pageSize,false,[
-            'query'=>[
-            'name'=>$name,
+        $terms =$Term->where('name','like','%'.$name .'%')->order('id desc')->paginate($pageSize,false,[
+                'query'=>[
+                'name'=>$name,
             ],
         ]);
 
@@ -56,6 +56,7 @@ class TermController extends PassController
         // 进行跳转
         return $this->success('删除成功', url('index'));
     }
+
     public function edit()
     {
          // 获取传入ID
@@ -75,6 +76,7 @@ class TermController extends PassController
         // 将封装好的V层内容返回给用户
         return $htmls;
     }
+
     public function save()
     {
         // 接收传入数据
@@ -93,10 +95,12 @@ class TermController extends PassController
         }
         return $this->success('添加成功', url('index'));         // 成功进行跳转
     }
+
     public function add()
     {
         return $this->fetch();
     }
+
     public function update()
     {
        try {
@@ -128,6 +132,7 @@ class TermController extends PassController
        
         return $this->success('更新成功', url('index'));
     }
+    
     public function activation()
     {
         $terms = Term::all();

@@ -7,16 +7,11 @@
 <hr />
 <form class="form-inline" action="{:url('updateinquiry')}" method="post">
         <div class="row">
-                <label>课程名：</label>
-                
+                <label>课程名：</label>             
                 <input type="text" name="name" value="{$course->getData('name')}" class="btn btn-default"id="disabledInput"disabled>
-            </div>
-    
-
-    
+            </div>   
 </form>
 <hr />
-
 <table class="table table-hover table-bordered">
     <tr class="info">
         <th class="col-md-2"></th>
@@ -27,10 +22,8 @@
         <th class="col-md-2">第五节</th>
     </tr>
     <tr>
-        <td>
-            星期一 </td>
-        <td>
-        
+        <td>星期一</td>
+        <td>     
         <a href="{:url('add_course?id='. $course->getData('id'))}" class="btn btn-success">
             <i class="glyphicon glyphicon-plus"></i>
         </a>
@@ -57,37 +50,7 @@
         </td>
     </tr>
     <tr>
-        <td>
-            星期二 </td>
-        <td>
-            <a href="{:url('add_course?id='. $course->getData('id'))}" class="btn btn-success">
-                <i class="glyphicon glyphicon-plus"></i>
-            </a>
-        </td>
-        <td>
-            <a href="{:url('add_course?id='. $course->getData('id'))}" class="btn btn-success">
-                <i class="glyphicon glyphicon-plus"></i>
-            </a>
-        </td>
-        <td>
-            <a href="{:url('add_course?id='. $course->getData('id'))}" class="btn btn-success">
-                <i class="glyphicon glyphicon-plus"></i>
-            </a>
-        </td>
-        <td>
-            <a href="{:url('add_course?id='. $course->getData('id'))}" class="btn btn-success">
-                <i class="glyphicon glyphicon-plus"></i>
-            </a>
-        </td>
-        <td>
-            <a href="{:url('add_course?id='. $course->getData('id'))}" class="btn btn-success">
-                <i class="glyphicon glyphicon-plus"></i>
-            </a>
-        </td>
-    </tr>
-    <tr>
-        <td>
-            星期三 </td>
+        <td>星期二</td>
         <td>
             <a href="{:url('add_course?id='. $course->getData('id'))}" class="btn btn-success">
                 <i class="glyphicon glyphicon-plus"></i>
@@ -115,37 +78,7 @@
         </td>
     </tr>
     <tr>
-        <td>
-            星期四 </td>
-        <td>
-            <a href="{:url('add_course?id='. $course->getData('id'))}" class="btn btn-success">
-                <i class="glyphicon glyphicon-plus"></i>
-            </a>
-        </td>
-        <td>
-            <a href="{:url('add_course?id='. $course->getData('id'))}" class="btn btn-success">
-                <i class="glyphicon glyphicon-plus"></i>
-            </a>
-        </td>
-        <td>
-            <a href="{:url('add_course?id='. $course->getData('id'))}" class="btn btn-success">
-                <i class="glyphicon glyphicon-plus"></i>
-            </a>
-        </td>
-        <td>
-            <a href="{:url('add_course?id='. $course->getData('id'))}" class="btn btn-success">
-                <i class="glyphicon glyphicon-plus"></i>
-            </a>
-        </td>
-        <td>
-            <a href="{:url('add_course?id='. $course->getData('id'))}" class="btn btn-success">
-                <i class="glyphicon glyphicon-plus"></i>
-            </a>
-        </td>
-    </tr>
-    <tr>
-        <td>
-            星期五 </td>
+        <td>星期三</td>
         <td>
             <a href="{:url('add_course?id='. $course->getData('id'))}" class="btn btn-success">
                 <i class="glyphicon glyphicon-plus"></i>
@@ -173,8 +106,7 @@
         </td>
     </tr>
     <tr>
-        <td>
-            星期六 </td>
+        <td>星期四</td>
         <td>
             <a href="{:url('add_course?id='. $course->getData('id'))}" class="btn btn-success">
                 <i class="glyphicon glyphicon-plus"></i>
@@ -202,8 +134,63 @@
         </td>
     </tr>
     <tr>
+        <td>星期五</td>
         <td>
-            星期日 </td>
+            <a href="{:url('add_course?id='. $course->getData('id'))}" class="btn btn-success">
+                <i class="glyphicon glyphicon-plus"></i>
+            </a>
+        </td>
+        <td>
+            <a href="{:url('add_course?id='. $course->getData('id'))}" class="btn btn-success">
+                <i class="glyphicon glyphicon-plus"></i>
+            </a>
+        </td>
+        <td>
+            <a href="{:url('add_course?id='. $course->getData('id'))}" class="btn btn-success">
+                <i class="glyphicon glyphicon-plus"></i>
+            </a>
+        </td>
+        <td>
+            <a href="{:url('add_course?id='. $course->getData('id'))}" class="btn btn-success">
+                <i class="glyphicon glyphicon-plus"></i>
+            </a>
+        </td>
+        <td>
+            <a href="{:url('add_course?id='. $course->getData('id'))}" class="btn btn-success">
+                <i class="glyphicon glyphicon-plus"></i>
+            </a>
+        </td>
+    </tr>
+    <tr>
+        <td>星期六</td>
+        <td>
+            <a href="{:url('add_course?id='. $course->getData('id'))}" class="btn btn-success">
+                <i class="glyphicon glyphicon-plus"></i>
+            </a>
+        </td>
+        <td>
+            <a href="{:url('add_course?id='. $course->getData('id'))}" class="btn btn-success">
+                <i class="glyphicon glyphicon-plus"></i>
+            </a>
+        </td>
+        <td>
+            <a href="{:url('add_course?id='. $course->getData('id'))}" class="btn btn-success">
+                <i class="glyphicon glyphicon-plus"></i>
+            </a>
+        </td>
+        <td>
+            <a href="{:url('add_course?id='. $course->getData('id'))}" class="btn btn-success">
+                <i class="glyphicon glyphicon-plus"></i>
+            </a>
+        </td>
+        <td>
+            <a href="{:url('add_course?id='. $course->getData('id'))}" class="btn btn-success">
+                <i class="glyphicon glyphicon-plus"></i>
+            </a>
+        </td>
+    </tr>
+    <tr>
+        <td>星期日</td>
         <td>
             <a href="{:url('add_course?id='. $course->getData('id'))}" class="btn btn-success">
                 <i class="glyphicon glyphicon-plus"></i>
@@ -231,10 +218,6 @@
         </td>
     </tr>
 </table>
-
-
 </body>
-
 </html>
-
 {/block}

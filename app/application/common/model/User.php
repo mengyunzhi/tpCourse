@@ -22,6 +22,7 @@ class User extends \think\Model
                 return true;
             }
         }
+
         return false;
     }
     /**
@@ -31,17 +32,16 @@ class User extends \think\Model
      */
     public function checkPassword($password)
     {
-        if($this->getData('password') === $this::encryptPassword($password)){
+        if($this->getData('password') === $this::encryptPassword($password)) {
             return true;
-        }
-        else{
+        } else {
             return false;
         }
     }
     // 密码加密功能
     static public function encryptPassword($password)
     {   
-        if(!is_string($password)){
+        if(!is_string($password)) {
             throw new \RuntimeException("传入的密码非字符串", 2);
         }
         // 还可以借助其它字符串算法，来实现不同的加密。

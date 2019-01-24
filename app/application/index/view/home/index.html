@@ -1,29 +1,29 @@
 {extend name="index" /}
 {block name="content"}
-  <div class="row">
-    <div class="col-md-offset-2 col-md-8">
-      <table class="table table-bordered">
-        <tr class="info">
-          <td>周次</td>
-          <td>第一节</td>
-          <td>第二节</td>
-          <td>第三节</td>
-          <td>第四节</td>
-          <td>第五节</td>
-        </tr>
-        {volist name="lists" id="list"}
-        <tr>
-          <td class="info">{$week[$i]}</td>
-          {volist name="list" id="period"}
-          <td>
-            {volist name="period" id="student"}
-            <label>{$student.name}&nbsp{$student.state}</label><br />
-            {/volist}
-          </td>
+<div class="row">
+  <div class="col-md-offset-2 col-md-8">
+    <table class="table table-bordered">
+      <tr class="info">
+        <td>周次</td>
+        <td>第一节</td>
+        <td>第二节</td>
+        <td>第三节</td>
+        <td>第四节</td>
+        <td>第五节</td>
+      </tr>
+      {volist name="lists" id="list"}
+      <tr>
+        <td class="info">{$week[$i]}</td>
+        {volist name="list" id="period"}
+        <td>
+          {volist name="period" id="student"}
+          <label>{$student.name}&nbsp{$student.state}</label><br />
           {/volist}
-        </tr>
+        </td>
         {/volist}
-      </table>
-    </div>
+      </tr>
+      {/volist}
+    </table>
   </div>
+</div>
 {/block}

@@ -28,7 +28,8 @@ class Term extends Model
      * @return [term][进行中的学期] 
      * @author chenzhigao <[<1641088568@qq.com>]>
      */
-	static public function getCurrentTerm() {
+	static public function getCurrentTerm() 
+    {
 		// 获取所有学期
         $terms = Term::all();
         foreach ($terms as $term) 
@@ -45,7 +46,8 @@ class Term extends Model
      * @return [int]        [当前周次]
      * Author：chenzhigao <[<1641088568@qq.com>]>
      */
-	public function getWeekNumByTime($time = 0) {
+	public function getWeekNumByTime($time = 0) 
+    {
 		$start_timestamp = strtotime('start_time');
         $current_timestamp = time();
         $day = (int)($current_timestamp - $start_timestamp)/86400;
@@ -53,13 +55,15 @@ class Term extends Model
         return $time;
 	}
 
-    public function getDays(){
+    public function getDays()
+    {
         $days = [];
-        for($temp = 1 ; $temp <= 7 ; $temp ++) {
+        for($temp = 1; $temp <= 7; $temp++) {
             $Day = new Day($temp , 0,$this->id);
             $Day->Day = $temp;
             array_push($days, $Day);
         }
+        
         return $days;
     } 
 }

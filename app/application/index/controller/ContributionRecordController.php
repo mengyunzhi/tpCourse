@@ -14,7 +14,8 @@ class ContributionRecordController extends PassController
 {
     
     // 主界面
-    public function index() {
+    public function index() 
+    {
 
         // 获取所有学生的信息
         $student = Student::select();
@@ -25,7 +26,8 @@ class ContributionRecordController extends PassController
     }
 
     // 贡献值详细信息页面
-    public function detail() {
+    public function detail() 
+    {
 
         // 获取点击事件的学生id
         $id = Request::param('id');
@@ -40,7 +42,8 @@ class ContributionRecordController extends PassController
     }
 
     // 添加贡献值页面
-    public function add() {
+    public function add() 
+    {
 
         // 获取当前点击id
         $id = Request::param('id');
@@ -55,7 +58,8 @@ class ContributionRecordController extends PassController
     }
 
     // 添加贡献值页面的保存按钮
-    public function save() {
+    public function save() 
+    {
 
         // 获取V层数据
         $pos = Request::post();
@@ -70,7 +74,7 @@ class ContributionRecordController extends PassController
         if ($pos['edit'] == 0) {
             $student['contribution'] += $pos['number'];
 
-        } elseif($pos['edit'] == 1) {
+        } else if($pos['edit'] == 1) {
 
             $student['contribution'] -= $pos['number'];
         } else {

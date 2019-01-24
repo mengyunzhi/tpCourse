@@ -21,7 +21,7 @@ class Student extends Model
         $num = count($contri);
 
         // get sum
-        for ($i = 0; $i < $num; $i ++) { 
+        for ($i = 0; $i < $num; $i++) { 
 
             if (strtotime($contri[$i]['time']) - $time > 0) {
 
@@ -34,8 +34,8 @@ class Student extends Model
         return $nub;
     }
 
-    public function getWeekTotal() {
-
+    public function getWeekTotal() 
+    {
         $time = strtotime('monday this week');
         
         // get current time

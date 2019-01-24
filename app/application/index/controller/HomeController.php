@@ -18,7 +18,8 @@ use think\model\Collection;
 class HomeController extends Controller
 {
     // 获取数据库信息，并传到Ｖ层显示。
-    public function index() {
+    public function index() 
+    {
 
         // 查询当前学期
         $term = Term::where('state',1)->find();
