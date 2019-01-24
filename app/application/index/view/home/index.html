@@ -5,19 +5,18 @@
       <table class="table table-bordered">
         <tr class="info">
           <td>周次</td>
-          <td>第一节</td>
-          <td>第二节</td>
-          <td>第三节</td>
-          <td>第四节</td>
-          <td>第五节</td>
+          {volist name="periods" id="period"}
+          <td>{$period.name}</td>
+          {/volist}
         </tr>
-        {volist name="lists" id="list"}
+        {volist name="days" id="day"}
         <tr>
-          <td class="info">{$week[$i]}</td>
-          {volist name="list" id="period"}
+          <td class="info">{$day.name}</td>
+          {volist name="periods" id="period"}
           <td>
-            {volist name="period" id="student"}
-            <label>{$student.name}&nbsp{$student.state}</label><br />
+            {volist name="students" id="student"}
+            <label>{$student.name}&nbsp{eq name="$student->getHasCourse($student.id,$day.id,$period.id)" value="true"}有课{else /}无课{/eq}</label>
+            <br />
             {/volist}
           </td>
           {/volist}
