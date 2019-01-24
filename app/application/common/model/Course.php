@@ -1,6 +1,7 @@
 <?php
 namespace app\common\model;
 use app\common\validate\CourseValidate;
+use think\model\Collection;
 use think\Model;
 
 class Course extends Model

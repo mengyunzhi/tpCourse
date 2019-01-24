@@ -16,6 +16,7 @@ class Week
         
         for ($i = 0; $i < 7; $i ++)  {
             $week = new Week();
+            $week->id = $i;
             $week->name = $sever[$i];
             $week->periods = $periods;
             

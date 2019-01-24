@@ -1,6 +1,5 @@
 <?php
-namespace app\index\Model;
-use think\model\Collection;
+namespace app\common\model;
 use think\Model;
 
 class ClassTime extends Model

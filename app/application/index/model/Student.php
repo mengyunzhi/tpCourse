@@ -1,6 +1,7 @@
 <?php 
 namespace app\index\model;
 use app\index\model\ContributionRecord;
+use think\model\Collection;
 use think\Model;
 
 /**

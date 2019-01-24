@@ -11,6 +11,7 @@ use think\Model;
 
 class StudentCourses extends Model
 {
+   
     
 
 }

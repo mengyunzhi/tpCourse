@@ -1,5 +1,6 @@
 <?php 
 namespace app\common\model;
+use think\model\Collection;
 use think\Model;
 
 
